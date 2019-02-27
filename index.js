@@ -1,1 +1,2 @@
-require("./src/index.js");
+#!/usr/bin/env node
+require("./dist/index.js");
