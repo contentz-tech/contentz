@@ -3,15 +3,17 @@ const getConfig = require("./lib/get-config");
 const renderArticle = require("./lib/render-article");
 const renderHome = require("./lib/render-home");
 const renderArchive = require("./lib/render-archive");
+const generateRSS = require("./lib/generate-rss");
 
 async function main() {
   console.log("Getting configuration and list of articles");
   const [config, articles] = await Promise.all([getConfig(), getArticle()]);
-  console.log("Rendering articles and home page");
+  console.log("Starting rendering process...");
   await Promise.all([
     ...articles.map(article => renderArticle(article, config)),
     renderHome(config),
-    renderArchive(config, articles)
+    renderArchive(config, articles),
+    generateRSS(articles, config)
   ]);
 }
 
