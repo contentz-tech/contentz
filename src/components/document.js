@@ -17,7 +17,11 @@ function Document({
         httpEquiv: "Content-Type",
         content: "text/html; charset=utf-8"
       }),
-      jsx("title", null, data.title ? `${data.title} - ${config.title}` : config.title),
+      jsx(
+        "title",
+        null,
+        data.title ? `${data.title} - ${config.title}` : config.title
+      ),
       jsx("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1.0"
@@ -44,10 +48,9 @@ function Document({
       }),
       data.canonical_url &&
         jsx("meta", { rel: "canonical", href: data.canonical_url }),
-      links.length > 0 &&
-        links.map(link =>
-          jsx("link", { rel: "prefetch", href: link, key: link })
-        )
+      jsx("link", { rel: "prefetch", href: "/" }),
+      jsx("link", { rel: "prefetch", href: "/articles/" }),
+      links.map(link => jsx("link", { rel: "prefetch", href: link, key: link }))
     ),
     jsx(
       "body",
