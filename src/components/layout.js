@@ -1,5 +1,4 @@
 const { jsx } = require("@emotion/core");
-const { MDXProvider } = require("@mdx-js/tag");
 
 const ui = require("./ui");
 const { Title, Description, Date } = require("./lead");
@@ -25,7 +24,7 @@ function Layout(props) {
       jsx(Title, null, props.data.title),
       props.data.date && jsx(Date, { date: props.data.date }),
       props.data.description && jsx(Description, null, props.data.description),
-      jsx(MDXProvider, { components: ui, ...props })
+      jsx(props.Component, { components: ui })
     ),
     jsx(Footer, {
       patreon: props.config.patreon,
