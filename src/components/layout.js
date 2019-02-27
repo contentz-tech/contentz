@@ -28,6 +28,7 @@ function Layout(props) {
       jsx(MDXProvider, { components: ui, ...props })
     ),
     jsx(Footer, {
+      patreon: props.config.patreon,
       repository: props.config.repository,
       file: props.path || null
     })
