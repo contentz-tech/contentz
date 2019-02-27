@@ -15,7 +15,10 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
       {
         css: {
           margin: "0 auto",
-          maxWidth: "50em"
+          maxWidth: "50em",
+          "@media (max-width: 50em)": {
+            padding: "0 1.5em"
+          }
         }
       },
       jsx(Title, null, "Articles"),
@@ -42,7 +45,17 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
                   display: "grid",
                   gridTemplateColumns: "1fr 3fr",
                   gridTemplateRows: "2",
-                  gridTemplateAreas: '"date title" ". description"'
+                  gridTemplateAreas: '"date title" ". description"',
+                  "@media (max-width: 50em) and (orientation: landscape)": {
+                    gridTemplateColumns: "1fr auto",
+                    gridTemplateRows: "auto auto",
+                    gridTemplateAreas: '"title date" "description description"'
+                  },
+                  "@media (max-width: 50em) and (orientation: portrait)": {
+                    gridTemplateColumns: "auto",
+                    gridTemplateRows: "auto auto auto",
+                    gridTemplateAreas: '"title" "date" "description"'
+                  }
                 }
               },
               article.date &&
@@ -54,7 +67,15 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
                       fontWeight: "200",
                       marginRight: "1em",
                       gridArea: "date",
-                      textAlign: "right"
+                      textAlign: "right",
+                      "@media (max-width: 50em) and (orientation: landscape)": {
+                        marginRight: "0",
+                        marginLeft: "1em"
+                      },
+                      "@media (max-width: 50em) and (orientation: portrait)": {
+                        marginRight: "0",
+                        marginTop: "0.5em"
+                      }
                     }
                   },
                   format(article.date, "MMMM DD, YYYY")

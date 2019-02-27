@@ -18,7 +18,12 @@ function Layout(props) {
         css: {
           margin: "0 auto",
           maxWidth: "40em",
-          width: "100%"
+          width: "100%",
+          "@media (max-width: 40em)": {
+            fontSize: "0.9em",
+            boxSizing: "border-box",
+            padding: "0 2em"
+          }
         }
       },
       jsx(Title, null, props.data.title),

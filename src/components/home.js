@@ -26,6 +26,27 @@ function formatURL({ name, value }) {
   }
 }
 
+const Icon = props =>
+  jsx(
+    "i",
+    {
+      ...props,
+      css: {
+        svg: {
+          width: "32px",
+          height: "32px",
+          fill: "black",
+          "@media (max-width: 1000px) and (orientation: portrait)": {
+            width: "20px",
+            height: "20px"
+          },
+          "@media (prefers-color-scheme: dark)": { fill: "white" }
+        }
+      }
+    },
+    props.children
+  );
+
 function HomePage({ config = {} } = {}) {
   return jsx(
     Fragment,
@@ -36,14 +57,17 @@ function HomePage({ config = {} } = {}) {
       {
         css: {
           boxSizing: "border-box",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
           fontSize: "1.25em",
-          minHeight: "calc(100vh - 58px)",
-          margin: "0 auto 0",
+          minHeight: "calc(90vh - 58px)",
+          margin: "10vh auto 0",
           maxWidth: "1000px",
-          padding: "0 10vw 0"
+          padding: "0 10vw 0",
+          "@media (max-width: 1000px)": {
+            fontSize: "1em"
+          },
+          "@media (max-width: 1000px) and (orientation: landscape)": {
+            marginBottom: "10vh"
+          }
         }
       },
       jsx(Title, null, config.title),
@@ -72,20 +96,7 @@ function HomePage({ config = {} } = {}) {
                   "@media (prefers-color-scheme: dark)": { color: "white" }
                 }
               },
-              jsx(
-                "i",
-                {
-                  css: {
-                    svg: {
-                      width: "32px",
-                      height: "32px",
-                      fill: "black",
-                      "@media (prefers-color-scheme: dark)": { fill: "white" }
-                    }
-                  }
-                },
-                jsx(require(`./icons/${name.toLowerCase()}`))
-              )
+              jsx(Icon, null, jsx(require(`./icons/${name.toLowerCase()}`)))
             )
           ),
         config.email &&
@@ -107,20 +118,7 @@ function HomePage({ config = {} } = {}) {
                 "@media (prefers-color-scheme: dark)": { color: "white" }
               }
             },
-            jsx(
-              "i",
-              {
-                css: {
-                  svg: {
-                    width: "32px",
-                    height: "32px",
-                    fill: "black",
-                    "@media (prefers-color-scheme: dark)": { fill: "white" }
-                  }
-                }
-              },
-              jsx(require("./icons/email"))
-            )
+            jsx(Icon, null, jsx(require("./icons/email")))
           )
       ),
       config.patreon && jsx("br"),

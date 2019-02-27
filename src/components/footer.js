@@ -30,7 +30,14 @@ function Footer(props) {
           maxWidth: "60rem",
           margin: "0 auto",
           display: "flex",
-          justifyContent: "space-between"
+          justifyContent: "space-between",
+          "@media (max-width: 60rem) and (orientation: portrait)": {
+            flexDirection: "column",
+            padding: "0 2em"
+          },
+          "@media (max-width: 60rem) and (orientation: landscape)": {
+            padding: "0 2em"
+          }
         }
       },
       props.patreon
@@ -52,6 +59,9 @@ function Footer(props) {
             fontSize: "0.8em",
             display: "inline-flex",
             alignItems: "center",
+            "@media (max-width: 60rem)": {
+              marginTop: "1em",
+            },
             "@media (prefers-color-scheme: dark)": {
               color: "white"
             }
