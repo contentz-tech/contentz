@@ -2,6 +2,10 @@
 
 Write MDX, get highly optimized HTML.
 
+<a href="https://www.patreon.com/sergiodxa">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 - Use MDX to write your content
 - Use Frontmatter to define metadata for your content
 - Prefetch every internal link used in your content
