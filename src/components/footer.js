@@ -1,6 +1,7 @@
 const { jsx } = require("@emotion/core");
 
 const GitHubIcon = require("./icons/github");
+const Patreon = require("./patreon");
 
 const formatURL = (base, file) => {
   const _base = base.endsWith("/") ? base.slice(0, base.length - 1) : base;
@@ -16,7 +17,6 @@ function Footer(props) {
         background: "white",
         borderTop: "1px solid #eaeaea",
         padding: "2em 0",
-        textAlign: "right",
         "@media (prefers-color-scheme: dark)": {
           background: "#151515",
           borderTopColor: "#333"
@@ -25,7 +25,21 @@ function Footer(props) {
     },
     jsx(
       "div",
-      { css: { maxWidth: "60rem", margin: "0 auto" } },
+      {
+        css: {
+          maxWidth: "60rem",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between"
+        }
+      },
+      props.patreon
+        ? jsx(
+            "div",
+            { css: { fontSize: "0.9em" } },
+            jsx(Patreon, { name: props.patreon })
+          )
+        : jsx("div"),
       jsx(
         "a",
         {
@@ -44,7 +58,11 @@ function Footer(props) {
           }
         },
         "Edit it on GitHub",
-        jsx("i", { css: { height: "18px", width: "18px", marginLeft: "10px" } }, jsx(GitHubIcon))
+        jsx(
+          "i",
+          { css: { height: "18px", width: "18px", marginLeft: "10px" } },
+          jsx(GitHubIcon)
+        )
       )
     )
   );
