@@ -19,7 +19,7 @@ function extractMetadata(article) {
   );
 }
 
-function generateRSS(articles, config) {
+async function generateRSS(articles, config) {
   console.log("Generating RSS Atom feed");
   const rss = articles
     .map(extractMetadata)
@@ -58,7 +58,8 @@ function generateRSS(articles, config) {
     </author>${rss}
   </feed>`;
 
-  return makeDir("./public").then(() => writeFile("./public/atom.xml", feed, "utf8"));
+  await makeDir("./public");
+  return await writeFile("./public/atom.xml", feed, "utf8");
 }
 
 module.exports = generateRSS;
