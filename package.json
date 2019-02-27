@@ -17,19 +17,13 @@
     "del": "^3.0.0",
     "emotion": "^10.0.7",
     "emotion-server": "^10.0.7",
-    "execa": "^1.0.0",
     "get-hrefs": "^2.0.0",
     "globby": "^9.0.0",
     "gray-matter": "^4.0.2",
-    "is-git": "^1.0.0",
-    "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
-    "open-editor": "^1.2.0",
     "parse-url": "^5.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
   },
-  "devDependencies": {
-    "pkg": "^4.3.7"
-  }
+  "devDependencies": {}
 }
