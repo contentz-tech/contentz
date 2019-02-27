@@ -1,0 +1,44 @@
+const ReactDOMServer = require("react-dom/server");
+const { renderStylesToString } = require("emotion-server");
+const { jsx } = require("@emotion/core");
+const getHrefs = require("get-hrefs");
+const parseURL = require("parse-url");
+const { join } = require("path");
+
+const Layout = require("../components/layout");
+const Document = require("../components/document");
+
+const { writeFile, makeDir } = require("./fs");
+
+const isLocalURL = url => !parseURL(url).resource;
+
+async function render(article, config) {
+  const tmpPath = join("./.tmp", article.path).replace("mdx", "js");
+
+  await makeDir(tmpPath.slice(0, tmpPath.lastIndexOf("/") + 1));
+
+  await writeFile(tmpPath, article.content.code, "utf8");
+
+  const Component = require(join(process.cwd(), tmpPath));
+
+  const content = renderStylesToString(
+    ReactDOMServer.renderToStaticMarkup(
+      jsx(Layout, { ...article, config }, jsx(Component))
+    )
+  );
+
+  // await unlink(tmpPath);
+  // await del("./.tmp/**");
+
+  const links = getHrefs(content).filter(isLocalURL);
+
+  const html = renderStylesToString(
+    ReactDOMServer.renderToStaticMarkup(
+      jsx(Document, { ...article, config, links, content })
+    )
+  );
+
+  return { content: html, path: article.path };
+}
+
+module.exports = render;
