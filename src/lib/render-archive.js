@@ -33,20 +33,23 @@ async function writeContent(html) {
 }
 
 async function render(config, articles) {
-  console.log("Rendering archive of articles");
-  const links = articles.map(article => formatURL(article.path));
-  const metadatas = articles.map(article => extractMetadata(article));
-
-  const html = renderStylesToString(
-    ReactDOMServer.renderToStaticMarkup(
-      jsx(
-        Document,
-        { config, links },
-        jsx(ArchivePage, { config, articles: metadatas })
+  try {
+    const links = articles.map(article => formatURL(article.path));
+    const metadatas = articles.map(article => extractMetadata(article));
+  
+    const html = renderStylesToString(
+      ReactDOMServer.renderToStaticMarkup(
+        jsx(
+          Document,
+          { config, links },
+          jsx(ArchivePage, { config, articles: metadatas })
+        )
       )
-    )
-  );
-  await writeContent(html);
+    );
+    await writeContent(html);
+  } finally {
+    console.log("Render completed: Archive");
+  }
 }
 
 module.exports = render;

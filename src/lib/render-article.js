@@ -44,11 +44,16 @@ async function writeContent(file) {
 }
 
 async function renderArticle(article, config) {
-  const metadata = extractMetadata(article.content);
-  console.log("Rendering article \"%s\"", metadata.data.title);
-  const content = await parseMDX(metadata.content);
-  const file = await render({ ...article, ...metadata, content }, config);
-  await writeContent(file);
+  let title = "";
+  try {
+    const metadata = extractMetadata(article.content);
+    title = metadata.data.title;
+    const content = await parseMDX(metadata.content);
+    const file = await render({ ...article, ...metadata, content }, config);
+    await writeContent(file);
+  } finally {
+    console.log("Render completed: \"%s\"", title);
+  }
 }
 
 module.exports = renderArticle;
