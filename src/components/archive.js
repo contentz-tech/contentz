@@ -30,6 +30,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
         },
         articles
           .filter(article => article.published)
+          .sort((a, b) => b.date - a.date)
           .map(article =>
             jsx(
               "li",
