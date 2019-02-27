@@ -1,12 +1,11 @@
 {
   "name": "contentz",
   "description": "Write MDX, get highly optimized HTML",
-  "version": "1.1.1",
-  "source": "src/index.js",
-  "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "version": "1.1.2",
+  "main": "src/index.js",
+  "bin": "index.js",
   "files": [
-    "dist",
+    "src",
     "package.json",
     "README.md",
     "yarn.lock"
@@ -14,9 +13,6 @@
   "repository": "https://github.com/sergiodxa/contentz.git",
   "author": "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)",
   "license": "MIT",
-  "scripts": {
-    "build": "ncc build src/index.js -m"
-  },
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "@mdx-js/mdx": "^0.17.5",
@@ -34,7 +30,5 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
   },
-  "devDependencies": {
-    "@zeit/ncc": "^0.15.2"
-  }
+  "devDependencies": {}
 }
