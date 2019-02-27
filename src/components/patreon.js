@@ -5,7 +5,7 @@ const { Anchor } = require("./html/text");
 function Patreon(props) {
   return jsx(
     "p",
-    {},
+    { css: { margin: 0 } },
     "Do you like my content?",
     jsx("br"),
     jsx(
