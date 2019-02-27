@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "bin": "dist/index.js",
   "files": [
-    "src",
+    "dist",
     "package.json",
     "README.md",
     "yarn.lock"
@@ -15,7 +15,7 @@
   "author": "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)",
   "license": "MIT",
   "scripts": {
-    "build": "ncc build src/index.js"
+    "build": "ncc build src/index.js -m"
   },
   "dependencies": {
     "@emotion/core": "^10.0.7",
