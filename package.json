@@ -29,6 +29,5 @@
     "parse-url": "^5.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2"
-  },
-  "devDependencies": {}
+  }
 }
