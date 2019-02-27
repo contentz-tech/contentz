@@ -123,6 +123,7 @@ function HomePage({ config = {} } = {}) {
             )
           )
       ),
+      config.patreon && jsx("br"),
       config.patreon && jsx(Patreon, { name: config.patreon })
     )
   );
