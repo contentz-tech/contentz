@@ -1,5 +1,7 @@
 const { jsx } = require("@emotion/core");
 
+const { Anchor } = require("./html/text");
+
 function Header(props) {
   return jsx(
     "header",
@@ -21,11 +23,22 @@ function Header(props) {
     },
     jsx(
       "div",
-      { css: { maxWidth: "60rem", margin: "0 auto" } },
+      {
+        css: {
+          maxWidth: "60rem",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          "@media (max-width: 60rem)": {
+            padding: "0 1em"
+          }
+        }
+      },
       jsx(
         "a",
         {
-          href: props.target || "/articles",
+          href: props.target || "/",
           title: "Go back to articles list",
           css: {
             color: "black",
@@ -36,7 +49,8 @@ function Header(props) {
           }
         },
         props.title
-      )
+      ),
+      jsx(Anchor, { href: "/articles" }, "Articles")
     )
   );
 }
