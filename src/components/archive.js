@@ -37,6 +37,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
               {
                 key: JSON.stringify(article),
                 css: {
+                  margin: "1em 0",
                   fontSize: "1.25em",
                   display: "grid",
                   gridTemplateColumns: "1fr 3fr",
