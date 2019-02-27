@@ -1,34 +1,37 @@
 # Contentz
+
 Write MDX, get highly optimized HTML.
 
-* Write MDX
-* Preloaded linked pages 
-* Automatic lazy load images
-* Code Highlight
-* Generate RSS and Sitemap
-* Use Frontmatter to add metadata 
-* Use React client side to improve UX
-* Automatic Dark Mode
-* Good looking design 
-* Themable
-* Get automatically created list of posts
-* Get automatic homepage
-* Automatic Social Image
-* Offline First
-* PWA
-* Incremental build when possible using Git
+- Use MDX to write your content
+- Use Frontmatter to define metadata for your content
+- Prefetch every internal link used in your content
+- Get an archive page with linked and prefetched articles
+- Get a homepage with links to social networks
+- Automatic Dark Mode in Safari (more browsers coming!)
+- Good looking design
 
-## How does it work?
-Create an articles folder and put your .mdx files there. Run `contentz build`, you will get a public folder with the code of your blog automatically generated for you.
+## Install it
 
-### Pages
-You could also create a pages folder to put static pages (E.g. about, services, etc.).
+Install it using npm or yarn with a simple command
 
-### Custom Layouts
-If you want to customize it create a _layouts folder with all your layouts, you could then use them in your posts with the layout property in the frontmatter of your articles. The layouts “article” and “page” are the default for those kind of content.
+```bash
+yarn add contentz
+# npm install contentz
+```
 
-### Social Images
-At build time an open graph will be generated, in case an article or page define its usen OG it will avoid generating one for such content.
+## Start writing
 
-The layout is customizable with the `_social-image` layout name.
+Create a folder `/articles` and put your `.mdx` files there, here's an example post
 
+```mdx
+---
+title: My super cool article
+description: This is the description of the article
+date: 2018-01-01T00:00:00.000Z
+published: true
+---
+
+This is my content, here I could use markdown or import a component and render it.
+```
+
+Now run `contentz` and it will create a `/public` directory with your homepage, archive page and article.
