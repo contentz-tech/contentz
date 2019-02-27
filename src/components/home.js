@@ -3,6 +3,7 @@ const { jsx } = require("@emotion/core");
 
 const { Title, Description } = require("./lead");
 const Header = require("./header");
+const Patreon = require("./patreon");
 
 function formatURL({ name, value }) {
   switch (name.toLowerCase()) {
@@ -121,7 +122,8 @@ function HomePage({ config = {} } = {}) {
               jsx(require("./icons/email"))
             )
           )
-      )
+      ),
+      config.patreon && jsx(Patreon, { name: config.patreon })
     )
   );
 }
