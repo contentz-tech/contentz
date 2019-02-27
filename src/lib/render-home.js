@@ -15,6 +15,7 @@ async function writeContent(html) {
 }
 
 async function render(config) {
+  console.log("Rendering home page");
   const html = renderStylesToString(
     ReactDOMServer.renderToStaticMarkup(
       jsx(Document, { config }, jsx(HomePage, { config }))
