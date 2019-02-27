@@ -38,7 +38,7 @@ async function render(article, config) {
   const Component = require(join(process.cwd(), tmpPath));
 
   const content = await renderContent(
-    jsx(Layout, { ...article, config }, jsx(Component))
+    jsx(Layout, { ...article, config, Component })
   );
 
   await del("./.tmp/**");
