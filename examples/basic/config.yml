@@ -14,4 +14,9 @@ social:
   linkedin: sergiodxa
   dev: sergiodxa
   meetup: 182915204
+navigation:
+  - name: About
+    path: /about
+  - name: Services
+    path: /services
 ---

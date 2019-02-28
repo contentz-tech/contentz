@@ -11,7 +11,7 @@ function Layout(props) {
   return jsx(
     "div",
     { css: { position: "relative" } },
-    jsx(Header, { title: props.config.title }),
+    jsx(Header, { ...props.config }),
     jsx(
       "section",
       {

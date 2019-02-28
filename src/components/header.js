@@ -50,7 +50,19 @@ function Header(props) {
         },
         props.title
       ),
-      jsx(Anchor, { href: "/articles" }, "Articles")
+      jsx(
+        "nav",
+        { css: { a: { padding: "0 1em" } } },
+        jsx(Anchor, { href: "/articles/" }, "Articles"),
+        props.navigation &&
+          props.navigation.map(({ name, path }) =>
+            jsx(
+              Anchor,
+              { key: path, href: path.endsWith("/") ? path : `${path}/` },
+              name
+            )
+          )
+      )
     )
   );
 }

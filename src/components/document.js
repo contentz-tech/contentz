@@ -50,7 +50,13 @@ function Document({
         jsx("meta", { rel: "canonical", href: data.canonical_url }),
       jsx("link", { rel: "prefetch", href: "/" }),
       jsx("link", { rel: "prefetch", href: "/articles/" }),
-      links.map(link => jsx("link", { rel: "prefetch", href: link, key: link }))
+      links
+        .concat(
+          (config.navigation || [])
+            .map(({ path }) => (path.endsWith("/") ? path : `${path}/`))
+            .filter(path => path.startsWith("/"))
+        )
+        .map(link => jsx("link", { rel: "prefetch", href: link, key: link }))
     ),
     jsx(
       "body",
