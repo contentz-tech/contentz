@@ -17,6 +17,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
           margin: "0 auto",
           maxWidth: "50em",
           "@media (max-width: 50em)": {
+            boxSizing: "border-box",
             padding: "0 1.5em"
           }
         }
@@ -69,10 +70,12 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
                       gridArea: "date",
                       textAlign: "right",
                       "@media (max-width: 50em) and (orientation: landscape)": {
+                        fontSize: "0.9em",
                         marginRight: "0",
                         marginLeft: "1em"
                       },
                       "@media (max-width: 50em) and (orientation: portrait)": {
+                        display: "none",
                         marginRight: "0",
                         marginTop: "0.5em"
                       }
