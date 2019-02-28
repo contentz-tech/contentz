@@ -7,7 +7,7 @@ const { promisify } = require("util");
 const regex = ["./pages/**/*.mdx", "!./pages/index.mdx", "!./pages/articles.mdx"];
 const readFile = promisify(fs.readFile);
 
-async function readArticles() {
+async function getPages() {
   const paths = await globby(regex);
   // const updated = await updatedFiles();
   // filter somehow
@@ -19,4 +19,4 @@ async function readArticles() {
   );
 }
 
-module.exports = readArticles;
+module.exports = getPages;
