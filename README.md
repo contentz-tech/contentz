@@ -23,6 +23,35 @@ yarn add contentz
 # npm install contentz
 ```
 
+## Create configuration
+
+Create a configuration file called `config.yml`
+
+```yml
+---
+title: Sergio Xalambrí
+description: Senior Software Engineer and Technical Writer
+domain: https://sergiodxa.com
+language: en
+repository: https://github.com/sergiodxa/personal-site/
+email: hello@sergiodxa.com
+patreon: sergiodxa
+paypal: sergiodxa
+social:
+  twitter: sergiodxa
+  github: sergiodxa
+  npm: sergiodxa
+  linkedin: sergiodxa
+  dev: sergiodxa
+  meetup: 182915204
+navigation:
+  - name: About
+    path: /about
+  - name: Services
+    path: /services
+---
+```
+
 ## Start writing
 
 Create a folder `/articles` and put your `.mdx` files there, here's an example post
