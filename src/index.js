@@ -17,6 +17,9 @@ async function main() {
     getPages(),
     getLinks()
   ]);
+  if (links.length > 0) {
+    config.hasLinks = true;
+  }
   console.log("Starting rendering process...");
   await Promise.all([
     ...articles.map(article => renderArticle(article, config)),

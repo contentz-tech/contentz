@@ -50,6 +50,7 @@ function Document({
         jsx("meta", { rel: "canonical", href: data.canonical_url }),
       jsx("link", { rel: "prefetch", href: "/" }),
       jsx("link", { rel: "prefetch", href: "/articles/" }),
+      config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
       links
         .concat(
           (config.navigation || [])

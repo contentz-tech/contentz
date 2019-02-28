@@ -54,6 +54,7 @@ function Header(props) {
         "nav",
         { css: { a: { padding: "0 1em" } } },
         jsx(Anchor, { href: "/articles/" }, "Articles"),
+        props.hasLinks && jsx(Anchor, { href: "/links/" }, "Links"),
         props.navigation &&
           props.navigation.map(({ name, path }) =>
             jsx(
