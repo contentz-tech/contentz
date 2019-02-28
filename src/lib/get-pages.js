@@ -4,7 +4,7 @@ const { promisify } = require("util");
 
 // import updatedFiles from "./updated-files";
 
-const regex = ["./articles/**/*.mdx"];
+const regex = ["./pages/**/*.mdx", "!./articles/index.mdx", "!./articles/articles.mdx"];
 const readFile = promisify(fs.readFile);
 
 async function readArticles() {
