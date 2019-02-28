@@ -1,21 +1,29 @@
 const getArticles = require("./lib/get-articles");
 const getPages = require("./lib/get-pages");
 const getConfig = require("./lib/get-config");
+const getLinks = require("./lib/get-links");
 const renderArticle = require("./lib/render-article");
 const renderHome = require("./lib/render-home");
 const renderArchive = require("./lib/render-archive");
 const renderPage = require("./lib/render-page");
+const renderLinks = require("./lib/render-links");
 const generateRSS = require("./lib/generate-rss");
 
 async function main() {
   console.log("Getting configuration and list of articles");
-  const [config, articles, pages] = await Promise.all([getConfig(), getArticles(), getPages()]);
+  const [config, articles, pages, links] = await Promise.all([
+    getConfig(),
+    getArticles(),
+    getPages(),
+    getLinks()
+  ]);
   console.log("Starting rendering process...");
   await Promise.all([
     ...articles.map(article => renderArticle(article, config)),
     ...pages.map(article => renderPage(article, config)),
     renderHome(config),
     renderArchive(config, articles),
+    renderLinks(links, config),
     generateRSS(articles, config)
   ]);
 }
