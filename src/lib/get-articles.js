@@ -1,13 +1,11 @@
-const fs = require("fs");
 const globby = require("globby");
-const { promisify } = require("util");
+const { readFile } = require("./fs");
 
 // import updatedFiles from "./updated-files";
 
 const regex = ["./articles/**/*.mdx"];
-const readFile = promisify(fs.readFile);
 
-async function readArticles() {
+async function getArticles() {
   const paths = await globby(regex);
   // const updated = await updatedFiles();
   // filter somehow
@@ -19,4 +17,4 @@ async function readArticles() {
   );
 }
 
-module.exports = readArticles;
+module.exports = getArticles;
