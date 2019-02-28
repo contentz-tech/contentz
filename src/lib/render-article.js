@@ -52,7 +52,7 @@ async function renderArticle(article, config) {
     const file = await render({ ...article, ...metadata, content }, config);
     await writeContent(file);
   } finally {
-    console.log("Render completed: \"%s\"", title);
+    console.log("Article rendered: \"%s\"", title);
   }
 }
 
