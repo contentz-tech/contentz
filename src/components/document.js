@@ -49,6 +49,12 @@ function Document({
         httpEquiv: "X-UA-Compatible",
         content: "IE=edge,chrome=1"
       }),
+      jsx("meta", {
+        href: "/atom.xml",
+        type: "application/atom+xml",
+        rel: "alternate",
+        title: config.title
+      }),
       data.canonical_url &&
         jsx("meta", { rel: "canonical", href: data.canonical_url }),
       jsx("link", { rel: "prefetch", href: "/" }),
