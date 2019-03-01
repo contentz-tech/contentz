@@ -33,6 +33,7 @@ async function writeContent(html) {
 }
 
 async function render(config, articles) {
+  if (!config.hasArticles) return;
   try {
     const links = articles.map(article => formatURL(article.path));
     const metadatas = articles.map(article => extractMetadata(article));

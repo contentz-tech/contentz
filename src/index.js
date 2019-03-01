@@ -23,6 +23,9 @@ async function main() {
   if (links.length > 0) {
     config.hasLinks = true;
   }
+  if (articles.length > 0) {
+    config.hasArticles = true;
+  }
   console.log("Starting rendering process...");
   await Promise.all([
     statics(),
