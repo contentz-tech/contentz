@@ -10,7 +10,7 @@ const renderLinks = require("./lib/render-links");
 const generateRSS = require("./lib/generate-rss");
 
 async function main() {
-  console.log("Getting configuration and list of articles");
+  console.log("Preparing to start.");
   const [config, articles, pages, links] = await Promise.all([
     getConfig(),
     getArticles(),
@@ -32,9 +32,11 @@ async function main() {
 }
 
 main()
-  .then(() => console.log("Done! Your website has been succesfully built."))
+  .then(() => console.log("Done! Your website has been successfully built."))
   .catch(error => {
-    console.error("Error building your website.");
+    console.error(
+      "Error building your website. Check the error below for more information."
+    );
     console.error(error);
     process.exit(1);
   });
