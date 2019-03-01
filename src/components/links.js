@@ -95,7 +95,11 @@ function LinksPage({ config = {}, links = [] } = {}) {
               )
             ),
             link.comment &&
-              jsx("p", { css: { gridArea: "description" } }, link.comment)
+              jsx(
+                "p",
+                { css: { marginTop: "0.5em", gridArea: "description" } },
+                link.comment
+              )
           )
         )
       )

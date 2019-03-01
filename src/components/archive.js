@@ -101,7 +101,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
               article.description &&
                 jsx(
                   "p",
-                  { css: { gridArea: "description" } },
+                  { css: { marginTop: "0.5em", gridArea: "description" } },
                   article.description
                 )
             )
