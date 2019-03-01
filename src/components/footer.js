@@ -17,6 +17,7 @@ function Footer(props) {
         background: "white",
         borderTop: "1px solid #eaeaea",
         padding: "2em 0",
+        marginTop: "3em",
         "@media (prefers-color-scheme: dark)": {
           background: "#151515",
           borderTopColor: "#333"
