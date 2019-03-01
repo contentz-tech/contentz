@@ -81,7 +81,9 @@ function Document({
       children
         ? jsx("main", null, children)
         : jsx("main", { dangerouslySetInnerHTML: { __html: content } }),
-      config.sw !== false && jsx("script", { src: "/load-sw.js" })
+      config.sw !== false
+        ? jsx("script", { src: "/load-sw.js" })
+        : jsx("script", { src: "/unload-sw.js" })
     )
   );
 }

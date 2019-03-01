@@ -13,6 +13,18 @@ const register = minify(
   ].join("\n")
 ).code;
 
+const unregister = minify(
+  [
+    'if ("serviceWorker" in navigator) {',
+    '  window.addEventListener("load", () => {',
+    "    navigator.serviceWorker.getRegistrations().then(registrations => {",
+    "      registrations.forEach(registration => registration.unregister());",
+    "    })",
+    "  });",
+    "}"
+  ].join("\n")
+).code;
+
 const sw = minify(
   [
     "importScripts(",
@@ -34,6 +46,12 @@ async function generateRegister() {
   await writeFile("./public/load-sw.js", register);
 }
 
+async function generateUnregister() {
+  if (await exists("./public/unload-sw.js")) return;
+  await writeFile("./public/unload-sw.js", unregister);
+  unregister;
+}
+
 async function generateSW() {
   // if (await exists("./public/sw.js")) return;
   await writeFile("./public/sw.js", sw);
@@ -41,8 +59,14 @@ async function generateSW() {
 
 async function generator(config) {
   if (config.sw === false || config.sw === "false") {
-    await del(["./public/sw.js", "./public/load-sw.js"]);
-    return;
+    try {
+      return await Promise.all([
+        await del(["./public/sw.js", "./public/load-sw.js"]),
+        await generateUnregister()
+      ]);
+    } finally {
+      console.log("Service Worker unregister generated");
+    }
   }
   try {
     await makeDir("./public");
