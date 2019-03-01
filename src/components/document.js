@@ -9,7 +9,7 @@ function Document({
 } = {}) {
   return jsx(
     "html",
-    { lang: data.lang || config.language },
+    { lang: data.lang || config.language || "en" },
     jsx(
       "head",
       null,
@@ -30,7 +30,7 @@ function Document({
         name: "description",
         content: data.description || config.description
       }),
-      jsx("meta", { name: "language", content: data.lang }),
+      jsx("meta", { name: "language", content: data.lang || config.language || "en" }),
       jsx("meta", { name: "author", content: "" }),
       jsx("meta", { name: "subject", content: config.description }),
       jsx("meta", { name: "pagename", content: config.title }),
