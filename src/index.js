@@ -9,6 +9,7 @@ const renderPage = require("./lib/render-page");
 const renderLinks = require("./lib/render-links");
 const generateRSS = require("./lib/generate-rss");
 const statics = require("./lib/statics");
+const generateSW = require("./lib/generate-sw");
 
 async function main() {
   console.log("Preparing to start.");
@@ -29,7 +30,8 @@ async function main() {
     renderHome(config),
     renderArchive(config, articles),
     renderLinks(links, config),
-    generateRSS(articles, config)
+    generateRSS(articles, config),
+    generateSW()
   ]);
 }
 

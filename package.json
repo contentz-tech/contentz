@@ -34,7 +34,8 @@
     "mkdirp": "^0.5.1",
     "parse-url": "^5.0.1",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "terser": "^3.16.1"
   },
   "devDependencies": {
     "@zeit/ncc": "^0.15.2"

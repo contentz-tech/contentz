@@ -77,7 +77,8 @@ function Document({
       },
       children
         ? jsx("main", null, children)
-        : jsx("main", { dangerouslySetInnerHTML: { __html: content } })
+        : jsx("main", { dangerouslySetInnerHTML: { __html: content } }),
+      jsx("script", { src: "/load-sw.js" })
     )
   );
 }
