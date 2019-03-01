@@ -3,7 +3,7 @@
   "description": "Write MDX, get highly optimized HTML",
   "version": "1.7.0",
   "main": "src/index.js",
-  "bin": "index.js",
+  "bin": "cli.js",
   "files": [
     "src",
     "dist",
