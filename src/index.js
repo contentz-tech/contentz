@@ -7,6 +7,7 @@ const renderHome = require("./lib/render-home");
 const renderArchive = require("./lib/render-archive");
 const renderPage = require("./lib/render-page");
 const renderLinks = require("./lib/render-links");
+const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
 const statics = require("./lib/statics");
 const generateSW = require("./lib/generate-sw");
@@ -30,6 +31,7 @@ async function main() {
     renderHome(config),
     renderArchive(config, articles),
     renderLinks(links, config),
+    renderError(config),
     generateRSS(articles, config),
     generateSW()
   ]);
