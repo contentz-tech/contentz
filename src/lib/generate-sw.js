@@ -1,4 +1,5 @@
 const { minify } = require("terser");
+const del = require("del");
 
 const { writeFile, makeDir, exists } = require("./fs");
 
@@ -38,7 +39,11 @@ async function generateSW() {
   await writeFile("./public/sw.js", sw);
 }
 
-async function generator() {
+async function generator(config) {
+  if (config.sw === false || config.sw === "false") {
+    await del(["./public/sw.js", "./public/load-sw.js"]);
+    return;
+  }
   try {
     await makeDir("./public");
     await Promise.all([generateRegister(), generateSW()]);

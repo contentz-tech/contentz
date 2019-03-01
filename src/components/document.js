@@ -30,7 +30,10 @@ function Document({
         name: "description",
         content: data.description || config.description
       }),
-      jsx("meta", { name: "language", content: data.lang || config.language || "en" }),
+      jsx("meta", {
+        name: "language",
+        content: data.lang || config.language || "en"
+      }),
       jsx("meta", { name: "author", content: "" }),
       jsx("meta", { name: "subject", content: config.description }),
       jsx("meta", { name: "pagename", content: config.title }),
@@ -78,7 +81,7 @@ function Document({
       children
         ? jsx("main", null, children)
         : jsx("main", { dangerouslySetInnerHTML: { __html: content } }),
-      jsx("script", { src: "/load-sw.js" })
+      config.sw !== false && jsx("script", { src: "/load-sw.js" })
     )
   );
 }

@@ -33,7 +33,7 @@ async function main() {
     renderLinks(links, config),
     renderError(config),
     generateRSS(articles, config),
-    generateSW()
+    generateSW(config)
   ]);
 }
 
