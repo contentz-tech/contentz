@@ -5,7 +5,7 @@
 ![npm version](https://badgen.net/npm/v/contentz)
 ![dependencies](https://badgen.net/david/dep/sergiodxa/contentz)
 
-Write MDX, get highly optimized HTML.
+Write MDX, get highly optimized website.
 
 <a href="https://www.patreon.com/sergiodxa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
@@ -16,8 +16,9 @@ Write MDX, get highly optimized HTML.
 - Prefetch every internal link used in your content
 - Get an archive page with linked and prefetched articles
 - Get a homepage with links to social networks
-- Automatic Dark Mode in Safari (more browsers coming!)
-- Good looking design
+- Good Looking Responsive Design
+- Automatic Dark Mode (in Safari)
+- Apply CSS directly in MDX using the `css` prop and the `css` template tag
 
 ## Install it
 
@@ -146,4 +147,15 @@ Contentz will generate a valid RSS Atom feed automatically with your list of art
 
 ## Static Files
 
-If you want to link to static files like images, videos, etc. create a `/static` folder and put all your files there. When running `content` they will be automatically copied to `/public/static` 
+If you want to link to static files like images, videos, etc. create a `/static` folder and put all your files there. When running `content` they will be automatically copied to `/public/static`
+
+## Style in MDX
+
+In case you want to add an HTML tag with custom styles directly in your MDX content you could use the [`css` prop]9https://emotion.sh/docs/css-prop) and the [`css` template tag](https://emotion.sh/docs/css-prop#string-styles) of [Emotion](https://emotion.sh/).
+
+Example:
+
+```js
+<div css={{ color: "red" }}>This is red</div>
+<div css={css`color: blue`}>This is blue</div>
+```
