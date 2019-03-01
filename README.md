@@ -1,5 +1,10 @@
 # Contentz
 
+![license](https://badgen.net/github/license/sergiodxa/contentz)
+![releases](https://badgen.net/github/releases/sergiodxa/contentz)
+![npm version](https://badgen.net/npm/v/contentz)
+![dependencies](https://badgen.net/david/dep/sergiodxa/contentz)
+
 Write MDX, get highly optimized HTML.
 
 <a href="https://www.patreon.com/sergiodxa">
