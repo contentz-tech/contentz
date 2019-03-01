@@ -17,6 +17,4 @@ social:
 navigation:
   - name: About
     path: /about
-  - name: Services
-    path: /services
 ---
