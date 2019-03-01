@@ -48,33 +48,34 @@ function Footer(props) {
             jsx(Patreon, { name: props.patreon })
           )
         : jsx("div"),
-      jsx(
-        "a",
-        {
-          href: formatURL(props.repository, props.file),
-          rel: "alternate",
-          title: "Edit it on GitHub",
-          css: {
-            color: "black",
-            textDecoration: "none",
-            fontSize: "0.8em",
-            display: "inline-flex",
-            alignItems: "center",
-            "@media (max-width: 60rem)": {
-              marginTop: "1em",
-            },
-            "@media (prefers-color-scheme: dark)": {
-              color: "white"
-            }
-          }
-        },
-        "Edit it on GitHub",
+      props.repository &&
         jsx(
-          "i",
-          { css: { height: "18px", width: "18px", marginLeft: "10px" } },
-          jsx(GitHubIcon)
+          "a",
+          {
+            href: formatURL(props.repository, props.file),
+            rel: "alternate",
+            title: "Edit it on GitHub",
+            css: {
+              color: "black",
+              textDecoration: "none",
+              fontSize: "0.8em",
+              display: "inline-flex",
+              alignItems: "center",
+              "@media (max-width: 60rem)": {
+                marginTop: "1em"
+              },
+              "@media (prefers-color-scheme: dark)": {
+                color: "white"
+              }
+            }
+          },
+          "Edit it on GitHub",
+          jsx(
+            "i",
+            { css: { height: "18px", width: "18px", marginLeft: "10px" } },
+            jsx(GitHubIcon)
+          )
         )
-      )
     )
   );
 }
