@@ -1,4 +1,4 @@
-const matter = require("gray-matter")
+const matter = require("gray-matter");
 const mdx = require("@mdx-js/mdx");
 const buble = require("buble");
 const { join } = require("path");
@@ -8,12 +8,17 @@ const { makeDir, writeFile } = require("./fs");
 
 function extractMetadata(content) {
   const extracted = matter(content);
-  return Object.assign(extracted, extracted.data.tags && typeof extracted.data.tags === "string" ? {
-    data: {
-      ...extracted.data,
-      tags: extracted.data.tags.split(/,\s?/)
-    }
-  } : {});
+  return Object.assign(
+    extracted,
+    extracted.data.tags && typeof extracted.data.tags === "string"
+      ? {
+          data: {
+            ...extracted.data,
+            tags: extracted.data.tags.split(/,\s?/)
+          }
+        }
+      : {}
+  );
 }
 
 async function parseMDX(content) {
@@ -22,12 +27,14 @@ async function parseMDX(content) {
   return buble.transform(
     [
       'const React = require("react");',
+      'const { jsx, css } = require("@emotion/core");',
       'const { MDXTag } = require("@mdx-js/tag");',
       source.replace("export default ", "\n"),
       "module.exports = MDXContent;"
     ].join("\n"),
     {
-      target: { node: process.version.slice(1).split(".")[0] }
+      target: { node: process.version.slice(1).split(".")[0] },
+      jsx: "jsx"
     }
   );
 }
@@ -52,7 +59,7 @@ async function renderArticle(article, config) {
     const file = await render({ ...article, ...metadata, content }, config);
     await writeContent(file);
   } finally {
-    console.log("Page rendered: \"%s\"", title);
+    console.log('Page rendered: "%s"', title);
   }
 }
 
