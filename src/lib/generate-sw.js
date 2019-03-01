@@ -33,7 +33,7 @@ const sw = minify(
     "",
     "if (workbox) {",
     "  workbox.routing.registerRoute(",
-    "    context => context.url.pathname !== '/load-sw.js' && context.url.pathname !== '/sw.js',",
+    "    context => location.origin && context.url.origin && context.url.pathname !== '/load-sw.js' && context.url.pathname !== '/sw.js',",
     "    new workbox.strategies.NetworkFirst()",
     "  );",
     "}",
