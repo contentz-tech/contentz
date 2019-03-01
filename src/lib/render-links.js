@@ -15,7 +15,7 @@ async function writeContent(html) {
 }
 
 async function render(links, config) {
-  if (links.length === 0) return;
+  if (!config.hasLinks) return;
   try {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
