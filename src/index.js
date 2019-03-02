@@ -27,6 +27,9 @@ async function main() {
   if (articles.length > 0) {
     config.hasArticles = true;
   }
+  if (config.incremental !== false) {
+    config.incremental = true;
+  }
   console.log("Starting rendering process...");
   await Promise.all([
     statics(),

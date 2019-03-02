@@ -1,10 +1,12 @@
 const getSHA = require("./get-sha");
 
+const getConfig = require("./get-config");
 const { exists, readFile, writeFile, makeDir } = require("./fs");
 
 let savedCache = null;
 
 async function checkCache(path, content) {
+  if ((await getConfig()).incremental === false) return false;
   const cache = await readCache();
   return (
     cache[path] === getSHA(content) &&
