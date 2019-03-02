@@ -12,6 +12,7 @@ Write MDX, get highly optimized website.
 </a>
 
 - Use MDX to write your content
+- Incremental Build
 - Use Frontmatter to define metadata for your content
 - Prefetch every internal link used in your content
 - Get an archive page with linked and prefetched articles
@@ -70,6 +71,7 @@ navigation:
 | social      | A list of your social networks, used to link them in the homepage                   | No (default: hide social icons)     |
 | navigation  | A list of pages to link in the header                                               | No (default: don't add extra links) |
 | sw          | Set it as `false` if you want to disable SW generation                              | No (default: true)                  |
+| incremental | Set it as `false` if you want to disable incremental build                          | No (default: true)                  |
 
 #### Possible social networks
 
@@ -159,3 +161,11 @@ Example:
 <div css={{ color: "red" }}>This is red</div>
 <div css={css`color: blue`}>This is blue</div>
 ```
+
+## Incremental Build
+
+Contentz will detect what files changed and only update the related files. This mean if you add a new link only `/link/` will be regenerated, but if you change an article the article pages, the list of articles and the RSS feed will be regenerated.
+
+In the case you update the configuration or you update Contentz version all pages will be regenerated.
+
+If you want to opt-out of this feature set `incremental: false` in your `config.yml`. This will automatically invalidate previous caches and always generate all pages.
