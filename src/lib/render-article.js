@@ -5,6 +5,7 @@ const { join } = require("path");
 
 const render = require("./render");
 const { makeDir, writeFile } = require("./fs");
+const { checkCache } = require("./cache");
 
 function extractMetadata(content) {
   const extracted = matter(content);
@@ -51,6 +52,8 @@ async function writeContent(file) {
 }
 
 async function renderArticle(article, config) {
+  if (await checkCache(article.path, article.content)) return;
+
   let title = "";
   try {
     const metadata = extractMetadata(article.content);

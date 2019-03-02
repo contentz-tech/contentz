@@ -5,6 +5,7 @@ const { join } = require("path");
 
 const render = require("./render");
 const { makeDir, writeFile } = require("./fs");
+const { checkCache } = require("./cache");
 
 function extractMetadata(content) {
   const extracted = matter(content);
@@ -50,17 +51,19 @@ async function writeContent(file) {
   await writeFile(join(finalPath, "index.html"), file.content, "utf8");
 }
 
-async function renderArticle(article, config) {
+async function renderPage(page, config) {
+  if (await checkCache(page.path, page.content)) return true;
+
   let title = "";
   try {
-    const metadata = extractMetadata(article.content);
+    const metadata = extractMetadata(page.content);
     title = metadata.data.title;
     const content = await parseMDX(metadata.content);
-    const file = await render({ ...article, ...metadata, content }, config);
+    const file = await render({ ...page, ...metadata, content }, config);
     await writeContent(file);
   } finally {
     console.log('Page rendered: "%s"', title);
   }
 }
 
-module.exports = renderArticle;
+module.exports = renderPage;

@@ -1,6 +1,7 @@
 const matter = require("gray-matter");
 
 const { makeDir, writeFile } = require("./fs");
+const { checkCache } = require("./cache");
 
 function formatURL(path) {
   return path.slice(1, path.length - 4) + "/";
@@ -20,6 +21,12 @@ function extractMetadata(article) {
 }
 
 async function generateRSS(articles, config) {
+  // check for cache of all pages to render archive
+  const caches = await Promise.all(
+    articles.map(article => checkCache(article.path, article.content))
+  );
+  if (caches.reduce((prev, next) => next === prev, true)) return true;
+
   try {
     const rss = articles
       .map(extractMetadata)

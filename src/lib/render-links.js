@@ -4,6 +4,7 @@ const ReactDOMServer = require("react-dom/server");
 const { join } = require("path");
 
 const { makeDir, writeFile } = require("./fs");
+const { checkCache } = require("./cache");
 
 const LinksPage = require("../components/links");
 const Document = require("../components/document");
@@ -16,6 +17,8 @@ async function writeContent(html) {
 
 async function render(links, config) {
   if (!config.hasLinks) return;
+  if (await checkCache("links.yml", JSON.stringify(links))) return true;
+
   try {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(

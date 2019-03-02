@@ -11,6 +11,7 @@ const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
 const statics = require("./lib/statics");
 const generateSW = require("./lib/generate-sw");
+const { writeCache } = require("./lib/cache");
 
 async function main() {
   console.log("Preparing to start.");
@@ -37,6 +38,14 @@ async function main() {
     renderError(config),
     generateRSS(articles, config),
     generateSW(config)
+  ]);
+  await writeCache([
+    ...articles,
+    ...pages,
+    { path: "version", content: require("../package.json").version },
+    { path: "config.yml", content: JSON.stringify(config) },
+    { path: "sw", content: `${config.sw !== false}` },
+    { path: "links.yml", content: JSON.stringify(links) }
   ]);
 }
 

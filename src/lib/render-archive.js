@@ -5,6 +5,7 @@ const matter = require("gray-matter");
 const { join } = require("path");
 
 const { makeDir, writeFile } = require("./fs");
+const { checkCache } = require("./cache");
 
 const ArchivePage = require("../components/archive");
 const Document = require("../components/document");
@@ -34,10 +35,17 @@ async function writeContent(html) {
 
 async function render(config, articles) {
   if (!config.hasArticles) return;
+
+  // check for cache of all pages to render archive
+  const caches = await Promise.all(
+    articles.map(article => checkCache(article.path, article.content))
+  );
+  if (caches.reduce((prev, next) => next === prev, true)) return true;
+
   try {
     const links = articles.map(article => formatURL(article.path));
     const metadatas = articles.map(article => extractMetadata(article));
-  
+
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
         jsx(
