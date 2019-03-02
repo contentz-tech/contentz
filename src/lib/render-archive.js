@@ -40,7 +40,11 @@ async function render(config, articles) {
   const caches = await Promise.all(
     articles.map(article => checkCache(article.path, article.content))
   );
-  if (caches.reduce((prev, next) => next === prev, true)) return true;
+  if (
+    caches.reduce((prev, next) => next === prev, true) &&
+    (await checkCache("config.yml", JSON.stringify(config)))
+  )
+    return true;
 
   try {
     const links = articles.map(article => formatURL(article.path));

@@ -52,7 +52,11 @@ async function writeContent(file) {
 }
 
 async function renderArticle(article, config) {
-  if (await checkCache(article.path, article.content)) return;
+  if (
+    (await checkCache(article.path, article.content)) &&
+    (await checkCache("config.yml", JSON.stringify(config)))
+  )
+    return;
 
   let title = "";
   try {

@@ -17,7 +17,11 @@ async function writeContent(html) {
 
 async function render(links, config) {
   if (!config.hasLinks) return;
-  if (await checkCache("links.yml", JSON.stringify(links))) return true;
+  if (
+    (await checkCache("links.yml", JSON.stringify(links))) &&
+    (await checkCache("config.yml", JSON.stringify(config)))
+  )
+    return true;
 
   try {
     const html = renderStylesToString(
