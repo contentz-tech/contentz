@@ -1,3 +1,5 @@
+const del = require("del");
+
 const getArticles = require("./lib/get-articles");
 const getPages = require("./lib/get-pages");
 const getConfig = require("./lib/get-config");
@@ -42,13 +44,16 @@ async function main() {
     generateRSS(articles, config),
     generateSW(config)
   ]);
-  await writeCache([
-    ...articles,
-    ...pages,
-    { path: "version", content: require("../package.json").version },
-    { path: "config.yml", content: JSON.stringify(config) },
-    { path: "sw", content: `${config.sw !== false}` },
-    { path: "links.yml", content: JSON.stringify(links) }
+  await Promise.all([
+    del("./.tmp/**"),
+    writeCache([
+      ...articles,
+      ...pages,
+      { path: "version", content: require("../package.json").version },
+      { path: "config.yml", content: JSON.stringify(config) },
+      { path: "sw", content: `${config.sw !== false}` },
+      { path: "links.yml", content: JSON.stringify(links) }
+    ])
   ]);
 }
 
