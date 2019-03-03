@@ -41,7 +41,7 @@ async function render(config, articles) {
       ReactDOMServer.renderToStaticMarkup(
         jsx(
           Document,
-          { config, links },
+          { config, links, path: "./articles.mdx" },
           jsx(ArchivePage, { config, articles: metadatas })
         )
       )

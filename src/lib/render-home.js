@@ -20,7 +20,7 @@ async function render(config) {
   try {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
-        jsx(Document, { config }, jsx(HomePage, { config }))
+        jsx(Document, { config, path: "./.mdx" }, jsx(HomePage, { config }))
       )
     );
     await writeContent(html);
