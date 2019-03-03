@@ -16,14 +16,23 @@ async function writeContent(html) {
 }
 
 async function render(config) {
-  if (
-    !(await exists("./public/404.html")) &&
-    (await checkCache("config.yml", JSON.stringify(config)))
-  ) {
+  if (!(await exists("./public/404.html"))) {
     try {
       const html = renderStylesToString(
         ReactDOMServer.renderToStaticMarkup(
-          jsx(Document, { config }, jsx(ErrorPage, { config }))
+          jsx(
+            Document,
+            {
+              config,
+              path: "./404.mdx",
+              data: {
+                title: "Error 404",
+                description:
+                  "The page or article you have tried to access was not found"
+              }
+            },
+            jsx(ErrorPage, { config })
+          )
         )
       );
       await writeContent(html);
