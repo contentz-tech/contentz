@@ -1,23 +1,9 @@
-const matter = require("gray-matter");
-
 const { makeDir, writeFile } = require("./fs");
 const { checkCache } = require("./cache");
+const getMeta = require("./get-meta");
 
 function formatURL(path) {
   return path.slice(1, path.length - 4) + "/";
-}
-
-function extractMetadata(article) {
-  const extracted = matter(article.content);
-  return Object.assign(
-    extracted.data,
-    { path: formatURL(article.path) },
-    extracted.data.tags && typeof extracted.data.tags === "string"
-      ? {
-          tags: extracted.data.tags.split(/,\s?/)
-        }
-      : {}
-  );
 }
 
 async function generateRSS(articles, config) {
@@ -29,7 +15,10 @@ async function generateRSS(articles, config) {
 
   try {
     const rss = articles
-      .map(extractMetadata)
+      .map(article => ({
+        ...getMeta(article).data,
+        path: formatURL(article.path)
+      }))
       .map(article => {
         const link = config.domain + article.path;
         return `

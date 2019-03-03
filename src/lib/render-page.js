@@ -1,4 +1,3 @@
-const matter = require("gray-matter");
 const mdx = require("@mdx-js/mdx");
 const buble = require("buble");
 const { join } = require("path");
@@ -6,21 +5,7 @@ const { join } = require("path");
 const render = require("./render");
 const { makeDir, writeFile } = require("./fs");
 const { checkCache } = require("./cache");
-
-function extractMetadata(content) {
-  const extracted = matter(content);
-  return Object.assign(
-    extracted,
-    extracted.data.tags && typeof extracted.data.tags === "string"
-      ? {
-          data: {
-            ...extracted.data,
-            tags: extracted.data.tags.split(/,\s?/)
-          }
-        }
-      : {}
-  );
-}
+const getMeta = require("./get-meta");
 
 async function parseMDX(content) {
   const source = await mdx(content);
@@ -60,7 +45,7 @@ async function renderPage(page, config) {
 
   let title = "";
   try {
-    const metadata = extractMetadata(page.content);
+    const metadata = getMeta(page);
     title = metadata.data.title;
     const content = await parseMDX(metadata.content);
     const file = await render({ ...page, ...metadata, content }, config);
