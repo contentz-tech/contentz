@@ -13,6 +13,7 @@ const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
 const statics = require("./lib/statics");
 const generateSW = require("./lib/generate-sw");
+const generateOG = require("./lib/generate-og");
 const { writeCache } = require("./lib/cache");
 
 async function main() {
@@ -42,7 +43,8 @@ async function main() {
     renderLinks(links, config),
     renderError(config),
     generateRSS(articles, config),
-    generateSW(config)
+    generateSW(config),
+    generateOG(config, articles, pages)
   ]);
   await Promise.all([
     del("./.tmp/**"),

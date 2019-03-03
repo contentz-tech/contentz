@@ -1,11 +1,24 @@
 const { jsx } = require("@emotion/core");
+const { join } = require("path");
+
+const formatURL = (domain, path) => {
+  if (!path) return domain;
+  return `${domain}${path.slice(1, path.indexOf(".mdx"))}/`;
+};
+
+const formatOGURL = path => {
+  let tmp = path.slice(1, path.indexOf(".mdx"));
+  tmp = tmp.includes("/pages") ? tmp.slice("/pages".length) : tmp;
+  return join("/static/og", tmp, "/open-graph.png");
+};
 
 function Document({
   data = {},
   config = {},
   links = [],
   content,
-  children
+  children,
+  path
 } = {}) {
   return jsx(
     "html",
@@ -57,6 +70,38 @@ function Document({
       }),
       data.canonical_url &&
         jsx("meta", { rel: "canonical", href: data.canonical_url }),
+      jsx("meta", {
+        property: "og:type",
+        content: "website"
+      }),
+      jsx("meta", {
+        property: "og:title",
+        content: data.title || config.title
+      }),
+      jsx("meta", {
+        property: "og:description",
+        content: data.description || config.description
+      }),
+      jsx("meta", {
+        property: "og:image",
+        content: formatOGURL(path)
+      }),
+      jsx("meta", {
+        property: "og:image:alt",
+        content: data.description || config.description
+      }),
+      jsx("meta", {
+        property: "og:url",
+        content: formatURL(config.domain, path)
+      }),
+      jsx("meta", {
+        property: "og:site_name",
+        content: config.title
+      }),
+      jsx("meta", {
+        property: "og:locale",
+        content: data.lang || config.language || "en"
+      }),
       jsx("link", { rel: "prefetch", href: "/" }),
       jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
