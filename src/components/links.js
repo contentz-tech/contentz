@@ -2,7 +2,7 @@ const { Fragment } = require("react");
 const { jsx } = require("@emotion/core");
 const format = require("date-fns/format");
 
-const { Title, Description } = require("./lead");
+const { Title } = require("./lead");
 const Header = require("./header");
 
 function LinksPage({ config = {}, links = [] } = {}) {
