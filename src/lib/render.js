@@ -4,7 +4,6 @@ const { jsx } = require("@emotion/core");
 const getHrefs = require("get-hrefs");
 const parseURL = require("parse-url");
 const { join } = require("path");
-const del = require("del");
 
 const Layout = require("../components/layout");
 const Document = require("../components/document");
@@ -40,8 +39,6 @@ async function render(article, config) {
   const content = await renderContent(
     jsx(Layout, { ...article, config, Component })
   );
-
-  await del("./.tmp/**");
 
   const links = getHrefs(content).filter(isLocalURL);
 
