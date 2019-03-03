@@ -6,7 +6,6 @@
   "bin": "./cli.js",
   "files": [
     "src",
-    "dist",
     "package.json",
     "README.md",
     "yarn.lock"
@@ -15,7 +14,6 @@
   "author": "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)",
   "license": "MIT",
   "scripts": {
-    "prepublish": "yarn build",
     "build": "ncc build src/index.js -m"
   },
   "dependencies": {
