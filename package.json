@@ -2,10 +2,10 @@
   "name": "contentz",
   "description": "Write MDX, get highly optimized HTML",
   "version": "2.0.0",
-  "main": "./src/index.js",
   "bin": "./cli.js",
   "files": [
     "src",
+    "cli.js",
     "package.json",
     "README.md",
     "yarn.lock"
