@@ -1,9 +1,8 @@
 const { renderToStaticNodeStream } = require("react-dom/server");
 const { renderStylesToNodeStream } = require("emotion-server");
 const { jsx } = require("@emotion/core");
-const chrome = require("chrome-aws-lambda");
 const puppeteer = require("puppeteer-core");
-const { join, resolve } = require("path");
+const { join, parse } = require("path");
 
 const { exists, writeFile, makeDir } = require("./fs");
 const { checkCache } = require("./cache");
@@ -12,16 +11,6 @@ const OpenGraph = require("../components/open-graph");
 
 const CHROME_PATH =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-
-function getImagePath(path) {
-  const tmp = path.slice(".tmp/og".length);
-  return join(
-    "./public/static/og",
-    tmp.includes("/pages")
-      ? tmp.slice("/pages".length, tmp.indexOf(".mdx"))
-      : tmp.slice(0, tmp.indexOf(".mdx"))
-  );
-}
 
 function renderContent(ui) {
   return new Promise(resolve => {
@@ -38,84 +27,53 @@ function renderContent(ui) {
   });
 }
 
-async function generateOG(config, articles, pages) {
-  if (config.hasOwnProperty("socialImage") && config.socialImage === false)
-    return;
-
+async function generateOG(files) {
   const hasChrome = await exists(CHROME_PATH);
+  if (!hasChrome) {
+    console.error(
+      "Google Chrome was not found, it's required to generate the social images."
+    );
+    process.exit(1);
+  }
+
   const options = {
-    args: hasChrome ? [] : chrome.args,
-    executablePath: hasChrome ? CHROME_PATH : await chrome.executablePath,
-    headless: hasChrome ? true : chrome.headless,
+    args: [],
+    executablePath: CHROME_PATH,
+    headless: true,
     defaultViewport: { width: 2048, height: 1170 }
   };
-  const browser = await puppeteer.launch(options);
 
-  await makeDir("./.tmp/og");
-
-  const nonCached = await Promise.all(
-    articles
-      .concat(pages)
-      .filter(async file => !(await checkCache(file.path, file.content)))
-  );
-
-  const rendered = await Promise.all(
-    nonCached
-      .map(file => ({ path: file.path, data: getMeta(file).data }))
-      .filter(({ data }) => !data.hasOwnProperty("social"))
-      .concat([
-        {
-          path: "pages.mdx",
-          data: {
-            title: config.title,
-            description: config.description
-          }
-        },
-        {
-          path: "pages/articles.mdx",
-          data: {
-            title: "Articles",
-            description: `List of articles of ${config.title}`
-          }
-        },
-        {
-          path: "pages/links.mdx",
-          data: {
-            title: "Shared Links"
-          }
-        },
-        {
-          path: "pages/404.mdx",
-          data: {
-            title: "Error 404",
-            description: "The page or article you have tried to access was not found"
-          }
-        }
-      ])
-      .map(async ({ path, data }) => ({
-        path,
-        html: await renderContent(jsx(OpenGraph, { ...data }))
-      }))
-  );
-
-  const paths = await Promise.all(
-    rendered.map(async ({ path, html }) => {
-      const tmpPath = join("./.tmp/og", path);
-      await makeDir(tmpPath);
-      const finalPath = join(tmpPath, "index.html");
-      await writeFile(finalPath, html);
-      return finalPath;
+  const withContent = await Promise.all(
+    files.map(async file => {
+      return {
+        path: file.path,
+        content: await renderContent(jsx(OpenGraph, { ...file.data }))
+      };
     })
   );
 
-  await Promise.all(
-    paths.map(async path => {
+  const browser = await puppeteer.launch(options);
+
+  const images = await Promise.all(
+    withContent.map(async ({ path, content }) => {
       const page = await browser.newPage();
-      await page.goto(`file://${resolve(path)}`);
+      // I'm going to use data:text/html to avoid writing the HTML to disk
+      await page.goto(`data:text/html,${content}`);
       const file = await page.screenshot({ type: "png" });
-      const ogPath = getImagePath(path);
-      await makeDir(ogPath);
-      writeFile(join(ogPath, "open-graph.png"), file);
+      return { path, file };
+    })
+  );
+
+  await makeDir("./static/_social");
+
+  await Promise.all(
+    images.map(async image => {
+      const path = join(
+        "./static/_social/",
+        image.path.replace(".mdx", ".png")
+      );
+      await makeDir(parse(path).dir);
+      await writeFile(path, image.file);
     })
   );
 
