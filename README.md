@@ -30,6 +30,16 @@ yarn add contentz
 # npm install contentz
 ```
 
+## Use it
+
+After you have installed Contentz you could use it with a simple command.
+
+```bash
+contentz build
+```
+
+That will read your files and generate your website for you.
+
 ## Create configuration
 
 Create a configuration file called `config.yml`
@@ -169,3 +179,32 @@ Contentz will detect what files changed and only update the related files. This 
 In the case you update the configuration or you update Contentz version all pages will be regenerated.
 
 If you want to opt-out of this feature set `incremental: false` in your `config.yml`. This will automatically invalidate previous caches and always generate all pages.
+
+## Social Image
+
+Contentz could also automatically generate social images (aka Open Graph) for you to use in your articles and pages. To use it run the command:
+
+```bash
+contentz social [path]
+```
+
+Where `[path]` is the file to use to generate the social image. It could also be more than one file adding an space between them.
+
+```bash
+contentz social [path1] [path2]
+```
+
+A path could be a path for an article, a post or one of the auto generated pages.
+
+- home
+- archive/articles
+- links
+- error
+
+If you want to generate them initially run
+
+```bash
+contentz social home articles links error
+```
+
+After generating the social images you will see a folder `/static/_social` with your images, pages will be placed in `/static/_social/pages` and articles in `/static/_social/article`, special pages will be at the root of `_social`.
