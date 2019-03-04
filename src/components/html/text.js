@@ -55,7 +55,7 @@ exports.Anchor = props =>
       {
         target: !parse(props.href).resource ? "_self" : "_blank",
         css: {
-          color: "#067df7",
+          color: "#004BCC",
           textDecoration: "underline"
         }
       },
