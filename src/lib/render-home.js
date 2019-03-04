@@ -23,7 +23,7 @@ async function render(config) {
         jsx(Document, { config, path: "./.mdx" }, jsx(HomePage, { config }))
       )
     );
-    await writeContent(html);
+    await writeContent(`<!DOCTYPE html>${html}`);
   } finally {
     console.log("Render completed: Home");
   }

@@ -29,7 +29,7 @@ async function render(links, config) {
         jsx(Document, { config, path: "./links.mdx" }, jsx(LinksPage, { config, links }))
       )
     );
-    await writeContent(html);
+    await writeContent(`<!DOCTYPE html>${html}`);
   } finally {
     console.log("Render completed: Links");
   }

@@ -46,7 +46,7 @@ async function render(config, articles) {
         )
       )
     );
-    await writeContent(html);
+    await writeContent(`<!DOCTYPE html>${html}`);
   } finally {
     console.log("Render completed: Archive");
   }

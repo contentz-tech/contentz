@@ -35,7 +35,7 @@ async function render(config) {
           )
         )
       );
-      await writeContent(html);
+      await writeContent(`<!DOCTYPE html>${html}`);
     } finally {
       console.log("Render completed: Error");
     }

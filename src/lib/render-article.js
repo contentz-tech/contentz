@@ -33,7 +33,7 @@ async function writeContent(file) {
     "/"
   );
   await makeDir(finalPath);
-  await writeFile(join(finalPath, "index.html"), file.content, "utf8");
+  await writeFile(join(finalPath, "index.html"), `<!DOCTYPE html>${file.content}`, "utf8");
 }
 
 async function renderArticle(article, config) {
