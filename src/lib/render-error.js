@@ -24,7 +24,7 @@ async function render(config) {
             Document,
             {
               config,
-              path: "./404.mdx",
+              path: "error.mdx",
               data: {
                 title: "Error 404",
                 description:

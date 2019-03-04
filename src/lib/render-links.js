@@ -26,7 +26,7 @@ async function render(links, config) {
   try {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
-        jsx(Document, { config, path: "./links.mdx" }, jsx(LinksPage, { config, links }))
+        jsx(Document, { config, path: "links.mdx" }, jsx(LinksPage, { config, links }))
       )
     );
     await writeContent(`<!DOCTYPE html>${html}`);
