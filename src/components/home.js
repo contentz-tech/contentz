@@ -5,22 +5,31 @@ const { Title, Description } = require("./lead");
 const Header = require("./header");
 const Patreon = require("./patreon");
 
+const Twitter = require("./icons/twitter");
+const Meetup = require("./icons/meetup");
+const NPM = require("./icons/npm");
+const GitHub = require("./icons/github");
+const Dev = require("./icons/dev");
+const LinkedIn = require("./icons/linkedin");
+const Email = require("./icons/email");
+
 function formatURL({ name, value }) {
   switch (name.toLowerCase()) {
     case "twitter":
-      return `https://twitter.com/${value}`;
+      return { icon: Twitter, link: `https://twitter.com/${value}` };
     case "meetup":
-      return `https://www.meetup.com/members/${value}/`;
+      return {
+        icon: Meetup,
+        link: `https://www.meetup.com/members/${value}/`
+      };
     case "npm":
-      return `https://www.npmjs.com/~${value}`;
+      return { icon: NPM, link: `https://www.npmjs.com/~${value}` };
     case "github":
-      return `https://github.com/${value}`;
-    case "github":
-      return `https://github.com/${value}`;
+      return { icon: GitHub, link: `https://github.com/${value}` };
     case "dev":
-      return `https://dev.to/${value}`;
+      return { icon: Dev, link: `https://dev.to/${value}` };
     case "linkedin":
-      return `https://www.linkedin.com/in/${value}/`;
+      return { icon: LinkedIn, link: `https://www.linkedin.com/in/${value}/` };
     default:
       return null;
   }
@@ -81,7 +90,8 @@ function HomePage({ config = {} } = {}) {
               "a",
               {
                 key: name,
-                href: formatURL({ name, value }),
+                href: formatURL({ name, value }).link,
+                title: name,
                 css: {
                   display: "inline-flex",
                   color: "black",
@@ -96,7 +106,7 @@ function HomePage({ config = {} } = {}) {
                   "@media (prefers-color-scheme: dark)": { color: "white" }
                 }
               },
-              jsx(Icon, null, jsx(require(`./icons/${name.toLowerCase()}`)))
+              jsx(Icon, null, jsx(formatURL({ name, value}).icon))
             )
           ),
         config.email &&
@@ -118,7 +128,7 @@ function HomePage({ config = {} } = {}) {
                 "@media (prefers-color-scheme: dark)": { color: "white" }
               }
             },
-            jsx(Icon, null, jsx(require("./icons/email")))
+            jsx(Icon, null, jsx(Email))
           )
       ),
       config.patreon && jsx("br"),
