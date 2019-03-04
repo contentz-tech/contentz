@@ -82,7 +82,7 @@ function Document({
       }),
       jsx("meta", {
         property: "og:image",
-        content: formatOGURL(path)
+        content: data.social || formatOGURL(path)
       }),
       jsx("meta", {
         property: "og:image:alt",
