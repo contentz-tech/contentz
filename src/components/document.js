@@ -7,7 +7,7 @@ const formatURL = (domain, path) => {
 };
 
 const formatOGURL = path => {
-  return join("/static/_social", path).replace(".mdx", "")
+  return join("/static/_social", path).replace(".mdx", ".png")
 };
 
 function Document({
