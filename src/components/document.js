@@ -7,9 +7,7 @@ const formatURL = (domain, path) => {
 };
 
 const formatOGURL = path => {
-  let tmp = path.slice(1, path.indexOf(".mdx"));
-  tmp = tmp.includes("/pages") ? tmp.slice("/pages".length) : tmp;
-  return join("/static/og", tmp, "/open-graph.png");
+  return join("/static/_social", path).replace(".mdx", "")
 };
 
 function Document({
@@ -47,7 +45,7 @@ function Document({
         name: "language",
         content: data.lang || config.language || "en"
       }),
-      jsx("meta", { name: "author", content: "" }),
+      jsx("meta", { name: "author", content: config.title }),
       jsx("meta", { name: "subject", content: config.description }),
       jsx("meta", { name: "pagename", content: config.title }),
       jsx("meta", { name: "HandheldFriendly", content: "True" }),
