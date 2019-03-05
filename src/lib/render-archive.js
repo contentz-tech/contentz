@@ -35,7 +35,10 @@ async function render(config, articles) {
 
   try {
     const links = articles.map(article => formatURL(article.path));
-    const metadatas = articles.map(article => getMeta(article).data);
+    const metadatas = articles.map(article => ({
+      path: article.path,
+      ...getMeta(article).data
+    }));
 
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
