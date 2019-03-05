@@ -89,7 +89,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
                 jsx(
                   "a",
                   {
-                    href: article.path.slice(1),
+                    href: article.path.slice(1, article.path.indexOf(".mdx")),
                     css: {
                       color: "black",
                       "@media (prefers-color-scheme: dark)": { color: "white" }
