@@ -6,8 +6,8 @@ const formatURL = (domain, path) => {
   return `${domain}${path.slice(1, path.indexOf(".mdx"))}/`;
 };
 
-const formatOGURL = path => {
-  return join("/static/_social", path).replace(".mdx", ".png")
+const formatOGURL = (path, domain) => {
+  return join(domain, "/static/_social", path).replace(".mdx", ".png");
 };
 
 function Document({
@@ -82,7 +82,7 @@ function Document({
       }),
       jsx("meta", {
         property: "og:image",
-        content: data.social || formatOGURL(path)
+        content: data.social || formatOGURL(path, config.domain)
       }),
       jsx("meta", {
         property: "og:image:alt",
@@ -100,14 +100,26 @@ function Document({
         property: "og:locale",
         content: data.lang || config.language || "en"
       }),
-      jsx("meta", {name: "twitter:card", value: "summary_large_image" }),
-      jsx("meta", {name: "twitter:site", value: `@${config.social.twitter}` }),
-      jsx("meta", {name: "twitter:creator", value: `@${config.social.twitter}` }),
-      jsx("meta", {name: "twitter:url", value: formatURL(config.domain, path) }),
-      jsx("meta", {name: "twitter:title", value: data.title || config.title }),
-      jsx("meta", {name: "twitter:description", value: data.description || config.description }),
-      jsx("meta", {name: "twitter:image", value: data.social || formatOGURL(path) }),
-      jsx("meta", {name: "twitter:summary", value: config.description }),
+      jsx("meta", { name: "twitter:card", value: "summary_large_image" }),
+      jsx("meta", { name: "twitter:site", value: `@${config.social.twitter}` }),
+      jsx("meta", {
+        name: "twitter:creator",
+        value: `@${config.social.twitter}`
+      }),
+      jsx("meta", {
+        name: "twitter:url",
+        value: formatURL(config.domain, path)
+      }),
+      jsx("meta", { name: "twitter:title", value: data.title || config.title }),
+      jsx("meta", {
+        name: "twitter:description",
+        value: data.description || config.description
+      }),
+      jsx("meta", {
+        name: "twitter:image",
+        value: data.social || formatOGURL(path, config.domain)
+      }),
+      jsx("meta", { name: "twitter:summary", value: config.description }),
       jsx("link", { rel: "prefetch", href: "/" }),
       jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
