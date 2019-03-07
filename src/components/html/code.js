@@ -1,4 +1,5 @@
 const { jsx } = require("@emotion/core");
+const Card = require("../card");
 
 exports.Code = props =>
   jsx(
@@ -22,15 +23,17 @@ exports.Code = props =>
 
 exports.Pre = props =>
   jsx(
-    "pre",
-    Object.assign({}, props, {
+    Card,
+    null,
+    jsx("pre", {
+      ...props,
       css: {
-        border: "1px solid black",
-        padding: "1rem calc(2rem - 1px)",
-        margin: "1rem -2rem",
         overflowX: "scroll",
         code: {
           color: "black",
+          "@media (prefers-color-scheme: dark)": {
+            color: "white"
+          },
           ":before": {
             content: "''"
           },
@@ -40,4 +43,4 @@ exports.Pre = props =>
         }
       }
     })
-  );
+  )
