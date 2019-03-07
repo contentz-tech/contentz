@@ -1,6 +1,7 @@
 const { jsx } = require("@emotion/core");
 const { memo } = require("react");
 const { Code } = require("./html/code");
+const Card = require("./card");
 
 const FolderIcon = require("./icons/folder");
 const FileIcon = require("./icons/file");
@@ -132,24 +133,8 @@ const FileTree = memo(props =>
   typeof props.children !== "string"
     ? jsx(Code, props)
     : jsx(
-        "div",
-        {
-          css: {
-            boxShadow: "rgba(0, 0, 0, 0.12) 0px 2px 5px 0px",
-            background: "rgb(255, 255, 255)",
-            borderRadius: "5px",
-            transition: "all 0.2s ease 0s",
-            userSelect: "none",
-            margin: "0 -2em 3em",
-            padding: "1em 2em",
-            "@media (max-width: 720px)": {
-              boxShadow: "none",
-              borderRadius: 0,
-              margin: 0,
-              padding: "1em 0.5em"
-            }
-          }
-        },
+        Card,
+        null,
         jsx(
           "ul",
           { css: { listStyleType: "none", paddingLeft: 0 } },
