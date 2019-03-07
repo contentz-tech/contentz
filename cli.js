@@ -6,24 +6,28 @@ const pkg = require("./package.json");
 
 const cli = meow(
   `${chalk.white("Usage")}
-  $ ${chalk.cyan("contentz build")}
-  $ ${chalk.cyan("contentz social <path>")}
+  $ ${chalk.cyan("contentz build")} Build the whole website
+  $ ${chalk.cyan(
+    "contentz social <path>"
+  )} Generate the social images for the given files
+  $ ${chalk.cyan("contentz help")} Show this message
 `,
   {
     description: `${chalk.cyan("Contentz")} - ${pkg.description}`
   }
 );
 
-const [cmd, ...file] = cli.input;
+const [cmd, ...files] = cli.input;
 
-if (!cmd) cli.showHelp(0);
+if (cmd === "help") cli.showHelp(0);
+if (!cmd) require("./src/build")(files);
 
 const commands = {
   build: require("./src/build"),
   social: require("./src/social"),
   write: () => {},
   page: () => {}
-}
+};
 
 const command = commands[cmd];
-command(file);
+command(files);
