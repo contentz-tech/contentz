@@ -1,0 +1,31 @@
+{
+  "patreon": {
+    "first": "Do you like my content?",
+    "link": "Become a Patreon and help me continue writing!"
+  },
+  "links": {
+    "title": "Shared Links"
+  },
+  "header": {
+    "mainLinkDescription": "Go back to articles list",
+    "articles": "Articles",
+    "links": "Links"
+  },
+  "footer": {
+    "editOnGitHub": "Edit it on GitHub"
+  },
+  "lead": {
+    "postedOn": "Posted on "
+  },
+  "error": {
+    "title": "Error 404",
+    "description": "The page or article you have tried to access was not found",
+    "goHome": "Go to the Home",
+    "goArticles": "Go to the list of Articles",
+    "goLinks": "Go to the list of Shared Links"
+  },
+  "archive": {
+    "title": "Articles",
+    "description": "List of articles of ${config.title}"
+  }
+}
