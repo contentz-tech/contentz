@@ -20,6 +20,7 @@ Write MDX, get highly optimized website.
 - Good Looking Responsive Design
 - Automatic Dark Mode (in Safari)
 - Apply CSS directly in MDX using the `css` prop and the `css` template tag
+- Internationalization
 
 ## Install it
 
@@ -208,3 +209,11 @@ contentz social home articles links error
 ```
 
 After generating the social images you will see a folder `/static/_social` with your images, pages will be placed in `/static/_social/pages` and articles in `/static/_social/article`, special pages will be at the root of `_social`.
+
+## Internationalization
+
+Contentz support i18n out of the box for the fixed texts of the website, text like the Patreon support or edit on GitHub. To change the main language of your website set the key `language` or the key `lang` (language is prefered) to the language code.
+
+Supported languages are `es` for Spanish and `en` for English (default to English in case of invalid language code).
+
+If your language is not supported [add a JSON with the messages](https://github.com/sergiodxa/contentz/tree/master/src/messages) and [load it in the i18n lib](https://github.com/sergiodxa/contentz/blob/master/src/lib/i18n.js). Then send a PR to add it.
