@@ -18,7 +18,8 @@
     "optimized",
     "performance",
     "offline first",
-    "mdx"
+    "mdx",
+    "i18n"
   ],
   "repository": "https://github.com/sergiodxa/contentz.git",
   "author": "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)",
