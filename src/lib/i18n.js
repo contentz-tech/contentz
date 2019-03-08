@@ -1,6 +1,7 @@
 const getConfig = require("./get-config");
 
 const en = require("../messages/en.json");
+const es = require("../messages/es.json");
 
 let messages = null;
 
@@ -11,6 +12,10 @@ async function i18n() {
   const language = config.language || config.lang;
 
   switch (language) {
+    case "es": {
+      messages = es;
+      return es;
+    }
     default: {
       messages = en;
       return en;

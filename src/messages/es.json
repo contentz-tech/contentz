@@ -1,0 +1,31 @@
+{
+  "patreon": {
+    "first": "¿Te gusta mi contenido?",
+    "link": "¡Conviértete en Patreon y ayúdame a seguir escribiendo!"
+  },
+  "links": {
+    "title": "Enlaces Compartidos"
+  },
+  "header": {
+    "mainLinkDescription": "Volver a la lista de artículos",
+    "articles": "Artículos",
+    "links": "Enlaces"
+  },
+  "footer": {
+    "editOnGitHub": "Editar en GitHub"
+  },
+  "lead": {
+    "postedOn": "Publicado el "
+  },
+  "error": {
+    "title": "Error 404",
+    "description": "La página o artículo que intentaste acceder no existe",
+    "goHome": "Volver al inicio",
+    "goArticles": "Ir a la lista de artículos",
+    "goLinks": "Ir a la lista de enlaces compartidos"
+  },
+  "archive": {
+    "title": "Artículos",
+    "description": "Lista de artículo de ${config.title}"
+  }
+}
