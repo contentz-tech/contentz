@@ -7,8 +7,10 @@ const { join } = require("path");
 
 const Layout = require("../components/layout");
 const Document = require("../components/document");
+const { IntlProvider } = require("../components/i18n");
 
 const { writeFile, makeDir } = require("./fs");
+const i18n = require("./i18n");
 
 const isLocalURL = url => !parseURL(url).resource;
 
@@ -36,14 +38,24 @@ async function render(article, config) {
 
   const Component = require(join(process.cwd(), tmpPath));
 
+  const messages = await i18n();
+
   const content = await renderContent(
-    jsx(Layout, { ...article, config, Component })
+    jsx(
+      IntlProvider,
+      { locale: config.language || config.lang || "en", messages },
+      jsx(Layout, { ...article, config, Component })
+    )
   );
 
   const links = getHrefs(content).filter(isLocalURL);
 
   const html = await renderContent(
-    jsx(Document, { ...article, config, links, content })
+    jsx(
+      IntlProvider,
+      { locale: config.language || config.lang || "en", messages },
+      jsx(Document, { ...article, config, links, content })
+    )
   );
 
   return { content: html, path: article.path };
