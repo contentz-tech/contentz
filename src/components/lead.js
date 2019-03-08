@@ -1,5 +1,6 @@
 const { jsx } = require("@emotion/core");
 const format = require("date-fns/format");
+const { useIntl } = require("./intl");
 
 exports.Title = props =>
   jsx(
@@ -34,8 +35,11 @@ exports.Description = props =>
     props.children
   );
 
-exports.Date = props =>
-  jsx(
+exports.Date = props => {
+  const { messages, language } = useIntl();
+  const locale = require(`date-fns/locale/${language}`);
+
+  return jsx(
     "time",
     Object.assign({}, props, {
       dateTime: props.date.toJSON(),
@@ -45,6 +49,7 @@ exports.Date = props =>
         bottom: "100%"
       }
     }),
-    "Posted on ",
-    jsx("strong", null, format(props.date, "MMMM DD, YYYY"))
+    messages.lead.postedOn,
+    jsx("strong", null, format(props.date, "MMMM DD, YYYY", { locale }))
   );
+};

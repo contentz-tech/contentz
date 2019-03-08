@@ -60,7 +60,7 @@ function HomePage({ config = {} } = {}) {
   return jsx(
     Fragment,
     null,
-    jsx(Header, { ...config, target: "/" }),
+    jsx(Header, { ...config }),
     jsx(
       "section",
       {
@@ -106,7 +106,7 @@ function HomePage({ config = {} } = {}) {
                   "@media (prefers-color-scheme: dark)": { color: "white" }
                 }
               },
-              jsx(Icon, null, jsx(formatURL({ name, value}).icon))
+              jsx(Icon, null, jsx(formatURL({ name, value }).icon))
             )
           ),
         config.email &&

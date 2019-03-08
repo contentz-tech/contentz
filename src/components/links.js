@@ -4,12 +4,16 @@ const format = require("date-fns/format");
 
 const { Title } = require("./lead");
 const Header = require("./header");
+const { useIntl } = require("./intl");
 
 function LinksPage({ config = {}, links = [] } = {}) {
+  const { messages, language } = useIntl();
+  const locale =  require(`date-fns/locale/${language}`);
+
   return jsx(
     Fragment,
     null,
-    jsx(Header, { ...config, target: "/" }),
+    jsx(Header, { ...config, messages, target: "/" }),
     jsx(
       "section",
       {
@@ -22,7 +26,7 @@ function LinksPage({ config = {}, links = [] } = {}) {
           }
         }
       },
-      jsx(Title, null, "Shared Links"),
+      jsx(Title, null, messages.links.title),
       jsx(
         "ul",
         {
@@ -77,7 +81,7 @@ function LinksPage({ config = {}, links = [] } = {}) {
                     }
                   }
                 },
-                format(link.date, "MMMM DD, YYYY")
+                format(link.date, "MMMM DD, YYYY", { locale })
               ),
             jsx(
               "h2",

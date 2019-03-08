@@ -4,12 +4,15 @@ const { jsx } = require("@emotion/core");
 const { Title, Description } = require("./lead");
 const { Anchor } = require("./html/text");
 const Header = require("./header");
+const { useIntl } = require("./intl");
 
 function ErrorPage({ config = {} } = {}) {
+  const { messages } = useIntl();
+
   return jsx(
     Fragment,
     null,
-    jsx(Header, { ...config, target: "/" }),
+    jsx(Header, { ...config }),
     jsx(
       "section",
       {
@@ -28,12 +31,8 @@ function ErrorPage({ config = {} } = {}) {
           }
         }
       },
-      jsx(Title, null, "Error 404"),
-      jsx(
-        Description,
-        null,
-        "The page or article you have tried to access was not found"
-      ),
+      jsx(Title, null, messages.error.title),
+      jsx(Description, null, messages.error.description),
       jsx(
         "div",
         {
@@ -43,10 +42,11 @@ function ErrorPage({ config = {} } = {}) {
             }
           }
         },
-        jsx(Anchor, { href: "/" }, "Go to the Home"),
-        jsx(Anchor, { href: "/articles/" }, "Go to the list of Articles"),
+        jsx(Anchor, { href: "/" }, messages.error.goHome),
+        config.hasArticles &&
+          jsx(Anchor, { href: "/articles/" }, messages.error.goArticles),
         config.hasLinks &&
-          jsx(Anchor, { href: "/links/" }, "Go to the list of Shared Links")
+          jsx(Anchor, { href: "/links/" }, messages.error.goLinks)
       )
     )
   );

@@ -6,12 +6,12 @@ const { Title, Description, Date } = require("./lead");
 const Header = require("./header");
 const Footer = require("./footer");
 
-function Layout(props) {
-  if (!props.data.title) throw new Error("Article title is required!");
+function Layout({ config, data, path, Component }) {
+  if (!data.title) throw new Error("Article title is required!");
   return jsx(
     "div",
     { css: { position: "relative" } },
-    jsx(Header, { ...props.config }),
+    jsx(Header, { ...config }),
     jsx(
       "section",
       {
@@ -26,15 +26,15 @@ function Layout(props) {
           }
         }
       },
-      jsx(Title, null, props.data.title),
-      props.data.date && jsx(Date, { date: props.data.date }),
-      props.data.description && jsx(Description, null, props.data.description),
-      jsx(props.Component, { components: ui })
+      jsx(Title, null, data.title),
+      data.date && jsx(Date, { date: data.date }),
+      data.description && jsx(Description, null, data.description),
+      jsx(Component, { components: ui })
     ),
     jsx(Footer, {
-      patreon: props.config.patreon,
-      repository: props.config.repository,
-      file: props.path || null
+      patreon: config.patreon,
+      repository: config.repository,
+      file: path || null
     })
   );
 }

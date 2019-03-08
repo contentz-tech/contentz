@@ -1,19 +1,18 @@
 const { jsx } = require("@emotion/core");
 
 const { Anchor } = require("./html/text");
+const { useIntl } = require("./intl");
 
-function Patreon(props) {
+function Patreon({ name }) {
+  const { messages } = useIntl();
   return jsx(
     "p",
     { css: { margin: 0 } },
-    "Do you like my content?",
+    messages.patreon.first,
     jsx("br"),
-    jsx(
-      Anchor,
-      { href: `https://patreon.com/${props.name}` },
-      "Become a Patreon and help me continue writing!"
-    )
+    jsx(Anchor, { href: `https://patreon.com/${name}` }, messages.patreon.link)
   );
 }
 
 module.exports = Patreon;
+ 

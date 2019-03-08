@@ -4,12 +4,17 @@ const format = require("date-fns/format");
 
 const { Title, Description } = require("./lead");
 const Header = require("./header");
+const { useIntl } = require("./intl");
 
 function ArchivePage({ config = {}, articles = [] } = {}) {
+  const { messages, language } = useIntl();
+
+  const locale = require(`date-fns/locale/${language}`);
+
   return jsx(
     Fragment,
     null,
-    jsx(Header, { ...config, target: "/" }),
+    jsx(Header, { ...config, messages }),
     jsx(
       "section",
       {
@@ -22,8 +27,12 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
           }
         }
       },
-      jsx(Title, null, "Articles"),
-      jsx(Description, null, `List of articles of ${config.title}`),
+      jsx(Title, null, messages.archive.title),
+      jsx(
+        Description,
+        null,
+        messages.archive.description.replace("${config.title}", config.title)
+      ),
       jsx(
         "ul",
         {
@@ -81,7 +90,7 @@ function ArchivePage({ config = {}, articles = [] } = {}) {
                       }
                     }
                   },
-                  format(article.date, "MMMM DD, YYYY")
+                  format(article.date, "MMMM DD, YYYY", { locale })
                 ),
               jsx(
                 "h2",

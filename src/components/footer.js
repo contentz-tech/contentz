@@ -2,6 +2,7 @@ const { jsx } = require("@emotion/core");
 
 const GitHubIcon = require("./icons/github");
 const Patreon = require("./patreon");
+const { useIntl } = require("./intl");
 
 const formatURL = (base, file) => {
   const _base = base.endsWith("/") ? base.slice(0, base.length - 1) : base;
@@ -10,6 +11,10 @@ const formatURL = (base, file) => {
 };
 
 function Footer(props) {
+  // don't render footer if it's going to empty
+  if (!props.patreon && !props.repository) return null;
+  const { messages } = useIntl();
+
   return jsx(
     "footer",
     {
@@ -54,7 +59,7 @@ function Footer(props) {
           {
             href: formatURL(props.repository, props.file),
             rel: "alternate",
-            title: "Edit it on GitHub",
+            title: messages.footer.editOnGitHub,
             css: {
               color: "black",
               textDecoration: "none",
@@ -69,7 +74,7 @@ function Footer(props) {
               }
             }
           },
-          "Edit it on GitHub",
+          messages.footer.editOnGitHub,
           jsx(
             "i",
             { css: { height: "18px", width: "18px", marginLeft: "10px" } },

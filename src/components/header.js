@@ -1,8 +1,11 @@
 const { jsx } = require("@emotion/core");
 
 const { Anchor } = require("./html/text");
+const { useIntl } = require("./intl");
 
-function Header(props) {
+function Header({ title, hasArticles, hasLinks, navigation }) {
+  const { messages } = useIntl();
+
   return jsx(
     "header",
     {
@@ -38,8 +41,8 @@ function Header(props) {
       jsx(
         "a",
         {
-          href: props.target || "/",
-          title: "Go back to articles list",
+          href: "/",
+          title: messages.header.mainLinkDescription,
           css: {
             color: "black",
             textDecoration: "none",
@@ -48,15 +51,16 @@ function Header(props) {
             }
           }
         },
-        props.title
+        title
       ),
       jsx(
         "nav",
         { css: { a: { padding: "0 1em" } } },
-        props.hasArticles && jsx(Anchor, { href: "/articles/" }, "Articles"),
-        props.hasLinks && jsx(Anchor, { href: "/links/" }, "Links"),
-        props.navigation &&
-          props.navigation.map(({ name, path }) =>
+        hasArticles &&
+          jsx(Anchor, { href: "/articles/" }, messages.header.articles),
+        hasLinks && jsx(Anchor, { href: "/links/" }, messages.header.links),
+        navigation &&
+          navigation.map(({ name, path }) =>
             jsx(
               Anchor,
               { key: path, href: path.endsWith("/") ? path : `${path}/` },
