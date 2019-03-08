@@ -33,22 +33,30 @@ async function writeContent(file) {
     "/"
   );
   await makeDir(finalPath);
-  await writeFile(join(finalPath, "index.html"), `<!DOCTYPE html>${file.content}`, "utf8");
+  await writeFile(
+    join(finalPath, "index.html"),
+    `<!DOCTYPE html>${file.content}`,
+    "utf8"
+  );
 }
 
 async function renderArticle(article, config) {
   if (
     (await checkCache(article.path, article.content)) &&
     (await checkCache("config.yml", JSON.stringify(config)))
-  )
+  ) {
     return;
+  }
 
   let title = "";
   try {
     const metadata = getMeta(article);
     title = metadata.data.title;
     const content = await parseMDX(metadata.content);
-    const file = await render({ ...article, ...metadata, content, path: article.path }, config);
+    const file = await render(
+      { ...article, ...metadata, content, path: article.path },
+      config
+    );
     await writeContent(file);
   } finally {
     console.log('Article rendered: "%s"', title);
