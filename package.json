@@ -23,6 +23,11 @@
   ],
   "repository": "https://github.com/sergiodxa/contentz.git",
   "author": "Sergio Xalambrí <hello@sergiodxa.com> (https://sergiodxa.com)",
+  "homepage": "https://contentz.tech",
+  "bugs": {
+    "email": "hello+contentz@sergiodxa.com",
+    "url": "https://github.com/sergiodxa/contentz/issues"
+  },
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.7",
