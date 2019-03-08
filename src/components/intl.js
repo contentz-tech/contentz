@@ -3,8 +3,8 @@ const { jsx } = require("@emotion/core");
 
 const i18n = createContext(null);
 
-function IntlProvider({ locale, messages, children }) {
-  return jsx(i18n.Provider, { value: { locale, messages } }, children);
+function IntlProvider({ locale = "en", messages, children }) {
+  return jsx(i18n.Provider, { value: { language: locale, messages } }, children);
 }
 
 exports.IntlProvider = IntlProvider;
