@@ -6,9 +6,11 @@ const { join } = require("path");
 const { makeDir, writeFile } = require("./fs");
 const { checkCache } = require("./cache");
 const getMeta = require("./get-meta");
+const i18n = require("./i18n");
 
 const ArchivePage = require("../components/archive");
 const Document = require("../components/document");
+const { IntlProvider } = require("../components/intl");
 
 function formatURL(path) {
   return path.slice(1, path.length - 4) + "/";
@@ -30,8 +32,11 @@ async function render(config, articles) {
   if (
     caches.reduce((prev, next) => next === prev, true) &&
     (await checkCache("config.yml", JSON.stringify(config)))
-  )
+  ) {
     return true;
+  }
+
+  const messages = await i18n();
 
   try {
     const links = articles.map(article => formatURL(article.path));
@@ -43,9 +48,13 @@ async function render(config, articles) {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
         jsx(
-          Document,
-          { config, links, path: "./articles.mdx" },
-          jsx(ArchivePage, { config, articles: metadatas })
+          IntlProvider,
+          { locale: config.language || config.lang || "en", messages },
+          jsx(
+            Document,
+            { config, links, path: "./articles.mdx" },
+            jsx(ArchivePage, { config, articles: metadatas })
+          )
         )
       )
     );
