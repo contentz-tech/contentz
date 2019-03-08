@@ -7,7 +7,7 @@ const { join } = require("path");
 
 const Layout = require("../components/layout");
 const Document = require("../components/document");
-const { IntlProvider } = require("../components/i18n");
+const { IntlProvider } = require("../components/intl");
 
 const { writeFile, makeDir } = require("./fs");
 const i18n = require("./i18n");

@@ -8,7 +8,7 @@ const i18n = require("./i18n");
 
 const ErrorPage = require("../components/error");
 const Document = require("../components/document");
-const { IntlProvider } = require("../components/i18n");
+const { IntlProvider } = require("../components/intl");
 
 async function writeContent(html) {
   const finalPath = join(process.cwd(), "./public");
