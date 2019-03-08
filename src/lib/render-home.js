@@ -5,9 +5,11 @@ const { join } = require("path");
 
 const { makeDir, writeFile } = require("./fs");
 const { checkCache } = require("./cache");
+const i18n = require("./i18n");
 
 const HomePage = require("../components/home");
 const Document = require("../components/document");
+const { IntlProvider } = require("../components/i18n");
 
 async function writeContent(html) {
   const finalPath = join(process.cwd(), "./public", "/");
@@ -17,10 +19,19 @@ async function writeContent(html) {
 
 async function render(config) {
   if (await checkCache("config.yml", JSON.stringify(config))) return true;
+  const messages = await i18n();
   try {
     const html = renderStylesToString(
       ReactDOMServer.renderToStaticMarkup(
-        jsx(Document, { config, path: "home.mdx" }, jsx(HomePage, { config }))
+        jsx(
+          IntlProvider,
+          { locale: config.language || config.lang || "en", messages },
+          jsx(
+            Document,
+            { config, messages, path: "home.mdx" },
+            jsx(HomePage, { config, messages })
+          )
+        )
       )
     );
     await writeContent(`<!DOCTYPE html>${html}`);
