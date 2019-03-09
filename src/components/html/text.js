@@ -3,11 +3,11 @@ const parse = require("parse-url");
 
 exports.P = props =>
   jsx(
-    "div",
+    "p",
     Object.assign({}, props, {
       css: {
         margin: "1em 0",
-        fontSize: "1.25em"
+        fontSize: "1em"
       }
     })
   );
