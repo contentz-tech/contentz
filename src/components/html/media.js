@@ -1,36 +1,43 @@
 const { jsx } = require("@emotion/core");
+const Card = require("../card");
 
-exports.Image = props =>
-  jsx(
-    "img",
-    Object.assign({}, props, {
-      css: {
-        maxWidth: "100%",
-        verticalAlign: "top"
-      }
-    })
-  );
+exports.Image = props => {
+  const img = jsx("img", {
+    ...props,
+    css: {
+      maxWidth: "100%",
+      verticalAlign: "top"
+    }
+  });
 
-exports.Figure = props =>
-  jsx(
-    "figure",
-    Object.assign({}, props, {
-      css: {
-        fontSize: 0,
-        textAlign: "center",
-        margin: 0,
-        width: "100%"
-      }
-    })
-  );
+  if (!props.title) return img;
 
-exports.FigCaption = props =>
-  jsx(
-    "figcaption",
-    Object.assign({
-      css: {
-        color: "#9b9b9b",
-        fontSize: "0.9rem"
-      }
-    })
+  return jsx(
+    Card,
+    null,
+    jsx(
+      "figure",
+      {
+        css: {
+          textAlign: "center",
+          margin: 0,
+          width: "100%"
+        }
+      },
+      img,
+      props.title &&
+        jsx(
+          "figcaption",
+          {
+            css: {
+              fontSize: "0.8em",
+              textAlign: "center",
+              marginTop: "1em",
+              color: "rgba(0, 0, 0, 0.7)"
+            }
+          },
+          props.title
+        )
+    )
   );
+};
