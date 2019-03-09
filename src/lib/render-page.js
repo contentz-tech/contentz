@@ -15,6 +15,7 @@ async function parseMDX(content) {
       'const React = require("react");',
       'const { jsx, css } = require("@emotion/core");',
       'const { MDXTag } = require("@mdx-js/tag");',
+      'const Video = require("contentz/src/components/video.js");',
       source.replace("export default ", "\n"),
       "module.exports = MDXContent;"
     ].join("\n"),
