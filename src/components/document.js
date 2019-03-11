@@ -100,26 +100,32 @@ function Document({
         property: "og:locale",
         content: data.lang || config.language || "en"
       }),
-      jsx("meta", { name: "twitter:card", value: "summary_large_image" }),
-      jsx("meta", { name: "twitter:site", value: `@${config.social.twitter}` }),
+      jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+      jsx("meta", {
+        name: "twitter:site",
+        content: `@${config.social.twitter}`
+      }),
       jsx("meta", {
         name: "twitter:creator",
-        value: `@${config.social.twitter}`
+        content: `@${config.social.twitter}`
       }),
       jsx("meta", {
         name: "twitter:url",
-        value: formatURL(config.domain, path)
+        content: formatURL(config.domain, path)
       }),
-      jsx("meta", { name: "twitter:title", value: data.title || config.title }),
+      jsx("meta", {
+        name: "twitter:title",
+        content: data.title || config.title
+      }),
       jsx("meta", {
         name: "twitter:description",
-        value: data.description || config.description
+        content: data.description || config.description
       }),
       jsx("meta", {
         name: "twitter:image",
-        value: data.social || formatOGURL(path)
+        content: data.social || formatOGURL(path)
       }),
-      jsx("meta", { name: "twitter:summary", value: config.description }),
+      jsx("meta", { name: "twitter:summary", content: config.description }),
       jsx("link", { rel: "prefetch", href: "/" }),
       jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
