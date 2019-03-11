@@ -104,7 +104,7 @@ const Folder = memo(props =>
     null,
     jsx(
       "details",
-      { open: true },
+      { open: !props.close },
       jsx(
         "summary",
         {
