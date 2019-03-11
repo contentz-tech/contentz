@@ -70,20 +70,20 @@ navigation:
 
 ### Table of options
 
-| Option      | Description                                                                         | Required                            |
-| ----------- | ----------------------------------------------------------------------------------- | ----------------------------------- |
-| title       | The title of the website, used in the `<title>` and in the homepage                 | Yes                                 |
-| description | The description of the website, used in the `<meta>` and in the homepage            | Yes                                 |
-| domain      | The domain you are going to use to host the website, used in the RSS feed           | Yes                                 |
-| language    | The main language of the website, used as fallback for articles and pages           | No (default: en)                    |
-| repository  | The GitHub repository hosting the website, used in the footer of articles and pages | No (default: hide link to edit)     |
-| email       | Your email address, used on the Email icon in the homepage                          | No (default: hide icon)             |
-| patreon     | Your Patreon username, used in the homepage and the footer                          | No (default: hiden patreon message) |
-| social      | A list of your social networks, used to link them in the homepage                   | No (default: hide social icons)     |
-| navigation  | A list of pages to link in the header                                               | No (default: don't add extra links) |
-| sw          | Set it as `false` if you want to disable SW generation                              | No (default: true)                  |
-| incremental | Set it as `false` if you want to disable incremental build                          | No (default: true)                  |
-| favicon     | Set the path of the favicon of the website                                          | No (default: `/static/favicon.png`) |
+| Option      | Description                                                                         | Required                                   |
+| ----------- | ----------------------------------------------------------------------------------- | ------------------------------------------ |
+| title       | The title of the website, used in the `<title>` and in the homepage                 | No (default: `Just another Contentz site`) |
+| description | The description of the website, used in the `<meta>` and in the homepage            | No (default: empty description)            |
+| domain      | The domain you are going to use to host the website, used in the RSS feed           | Yes                                        |
+| language    | The main language of the website, used as fallback for articles and pages           | No (default: en)                           |
+| repository  | The GitHub repository hosting the website, used in the footer of articles and pages | No (default: hide link to edit)            |
+| email       | Your email address, used on the Email icon in the homepage                          | No (default: hide icon)                    |
+| patreon     | Your Patreon username, used in the homepage and the footer                          | No (default: hiden patreon message)        |
+| social      | A list of your social networks, used to link them in the homepage                   | No (default: hide social icons)            |
+| navigation  | A list of pages to link in the header                                               | No (default: don't add extra links)        |
+| sw          | Set it as `false` if you want to disable SW generation                              | No (default: true)                         |
+| incremental | Set it as `false` if you want to disable incremental build                          | No (default: true)                         |
+| favicon     | Set the path of the favicon of the website                                          | No (default: `/static/favicon.png`)        |
 
 #### Possible social networks
 
