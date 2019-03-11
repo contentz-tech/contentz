@@ -15,4 +15,3 @@ function Patreon({ name }) {
 }
 
 module.exports = Patreon;
- 

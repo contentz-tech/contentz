@@ -43,7 +43,7 @@ async function main() {
       renderLinks(links, config),
       renderError(config),
       generateRSS(articles, config),
-      generateSW(config),
+      generateSW(config)
     ]);
     await Promise.all([
       del("./.tmp/**"),

@@ -8,7 +8,7 @@ const { useIntl } = require("./intl");
 
 function LinksPage({ config = {}, links = [] } = {}) {
   const { messages, language } = useIntl();
-  const locale =  require(`date-fns/locale/${language}`);
+  const locale = require(`date-fns/locale/${language}`);
 
   return jsx(
     Fragment,

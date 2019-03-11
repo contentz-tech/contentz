@@ -34,7 +34,11 @@ async function writeContent(file) {
     "/"
   );
   await makeDir(finalPath);
-  await writeFile(join(finalPath, "index.html"), `<!DOCTYPE html>${file.content}`, "utf8");
+  await writeFile(
+    join(finalPath, "index.html"),
+    `<!DOCTYPE html>${file.content}`,
+    "utf8"
+  );
 }
 
 async function renderPage(page, config) {
@@ -49,7 +53,10 @@ async function renderPage(page, config) {
     const metadata = getMeta(page);
     title = metadata.data.title;
     const content = await parseMDX(metadata.content);
-    const file = await render({ ...page, ...metadata, content, path: page.path }, config);
+    const file = await render(
+      { ...page, ...metadata, content, path: page.path },
+      config
+    );
     await writeContent(file);
   } finally {
     console.log('Page rendered: "%s"', title);
