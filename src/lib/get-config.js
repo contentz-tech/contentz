@@ -3,7 +3,8 @@ const matter = require("gray-matter");
 const { readFile } = require("./fs");
 
 const defaultConfig = {
-  title: "Just another Contentz site"
+  title: "Just another Contentz site",
+  description: ""
 };
 
 let config = null;
