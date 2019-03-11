@@ -33,6 +33,10 @@ function Document({
         null,
         data.title ? `${data.title} - ${config.title}` : config.title
       ),
+      jsx("link", {
+        rel: "icon",
+        href: config.icon || "/static/favicon.png"
+      }),
       jsx("meta", {
         name: "viewport",
         content: "width=device-width, initial-scale=1.0"
