@@ -29,6 +29,10 @@
     "url": "https://github.com/sergiodxa/contentz/issues"
   },
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint 'src/**/*.js'",
+    "pretty": "prettier --check 'src/**/*.js'"
+  },
   "dependencies": {
     "@emotion/core": "^10.0.7",
     "@mdx-js/mdx": "^0.17.5",
@@ -50,5 +54,30 @@
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "terser": "^3.16.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.15.1",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.5",
+    "prettier": "^1.16.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
