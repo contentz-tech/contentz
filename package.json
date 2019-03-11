@@ -47,12 +47,14 @@
     "get-hrefs": "^2.0.0",
     "globby": "^9.0.0",
     "gray-matter": "^4.0.2",
+    "is-absolute": "^1.0.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",
     "parse-url": "^5.0.1",
     "puppeteer-core": "^1.12.2",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
+    "relative": "^3.0.2",
     "terser": "^3.16.1"
   },
   "devDependencies": {

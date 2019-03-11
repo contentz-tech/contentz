@@ -1,3 +1,6 @@
+const isAbsolute = require("is-absolute");
+const relative = require("relative");
+
 const getConfig = require("./lib/get-config");
 const getMeta = require("./lib/get-meta");
 const generateOG = require("./lib/generate-og");
@@ -9,7 +12,8 @@ async function main(paths) {
   const config = await getConfig();
 
   const files = await Promise.all(
-    paths.map(async path => {
+    paths.map(async _path => {
+      const path = isAbsolute(_path) ? relative(process.cwd(), _path) : _path;
       switch (path) {
         case "home":
         case "articles":
