@@ -6,7 +6,8 @@ const formatURL = (domain, path) => {
   return `${domain}${path.slice(1, path.indexOf(".mdx"))}/`;
 };
 
-const formatOGURL = path => {
+const formatOGURL = (path, domain) => {
+  if (domain) return domain + formatOGURL(path);
   return join("/static/_social", path).replace(".mdx", ".png");
 };
 
@@ -104,30 +105,40 @@ function Document({
         property: "og:locale",
         content: data.lang || config.language || "en"
       }),
-      jsx("meta", { name: "twitter:card", content: "summary_large_image" }),
+      jsx("meta", {
+        name: "twitter:card",
+        value: "summary_large_image",
+        content: "summary_large_image"
+      }),
       jsx("meta", {
         name: "twitter:site",
+        value: `@${config.social.twitter}`,
         content: `@${config.social.twitter}`
       }),
       jsx("meta", {
         name: "twitter:creator",
+        value: `@${config.social.twitter}`,
         content: `@${config.social.twitter}`
       }),
       jsx("meta", {
         name: "twitter:url",
+        value: formatURL(config.domain, path),
         content: formatURL(config.domain, path)
       }),
       jsx("meta", {
         name: "twitter:title",
+        value: data.title || config.title,
         content: data.title || config.title
       }),
       jsx("meta", {
         name: "twitter:description",
+        value: data.description || config.description,
         content: data.description || config.description
       }),
       jsx("meta", {
         name: "twitter:image",
-        content: data.social || formatOGURL(path)
+        value: data.social || formatOGURL(path, config.domain),
+        content: data.social || formatOGURL(path, config.domain)
       }),
       jsx("meta", { name: "twitter:summary", content: config.description }),
       jsx("link", { rel: "prefetch", href: "/" }),
