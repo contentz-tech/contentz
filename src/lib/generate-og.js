@@ -58,7 +58,9 @@ async function generateOG(files) {
     withContent.map(async ({ path, content }) => {
       const page = await browser.newPage();
       // I'm going to use data:text/html to avoid writing the HTML to disk
-      await page.goto(`data:text/html,${content}`);
+      await page.goto(
+        `data:text/html;base64,${Buffer.from(content).toString("base64")}`
+      );
       const file = await page.screenshot({ type: "png" });
       return { path, file };
     })
