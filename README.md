@@ -83,7 +83,7 @@ navigation:
 | navigation  | A list of pages to link in the header                                               | No (default: don't add extra links)        |
 | sw          | Set it as `false` if you want to disable SW generation                              | No (default: true)                         |
 | incremental | Set it as `false` if you want to disable incremental build                          | No (default: true)                         |
-| icon .       | Set the path of the favicon of the website                                          | No (default: `/static/favicon.png`)        |
+| icon        | Set the path of the favicon of the website                                          | No (default: `/static/favicon.png`)        |
 
 #### Possible social networks
 
