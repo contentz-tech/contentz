@@ -22,5 +22,11 @@
     "title": "Artículos",
     "description": "Lista de artículo de ${config.title}"
   },
-  "canonicalUrl": { "copy": "Publicado originalmente en " }
+  "canonicalUrl": { "copy": "Publicado originalmente en " },
+  "translated": {
+    "from": "Traducido de ",
+    "to": "Traducido a ",
+    "separator": ", ",
+    "lastSeparator": " y "
+  }
 }

@@ -6,6 +6,7 @@ const { Title, Description, Date } = require("./lead");
 const Header = require("./header");
 const Footer = require("./footer");
 const CanonicalURL = require("./canonical");
+const Translated = require("./translated");
 
 function Layout({ config, data, path, Component }) {
   if (!data.title) throw new Error("Article title is required!");
@@ -31,6 +32,9 @@ function Layout({ config, data, path, Component }) {
       data.date && jsx(Date, { date: data.date }),
       data.description && jsx(Description, null, data.description),
       data.canonical_url && jsx(CanonicalURL, { value: data.canonical_url }),
+      data.translated_from && jsx(Translated.From, data.translated_from),
+      data.translated_to &&
+        jsx(Translated.To, { translations: data.translated_to }),
       jsx(Component, { components: ui })
     ),
     jsx(Footer, {
