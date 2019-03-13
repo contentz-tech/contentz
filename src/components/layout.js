@@ -7,6 +7,7 @@ const Header = require("./header");
 const Footer = require("./footer");
 const CanonicalURL = require("./canonical");
 const Translated = require("./translated");
+const ReadNext = require("./read-next");
 
 function Layout({ config, data, path, Component }) {
   if (!data.title) throw new Error("Article title is required!");
@@ -35,7 +36,8 @@ function Layout({ config, data, path, Component }) {
       data.translated_from && jsx(Translated.From, data.translated_from),
       data.translated_to &&
         jsx(Translated.To, { translations: data.translated_to }),
-      jsx(Component, { components: ui })
+      jsx(Component, { components: ui }),
+      data.next && jsx(ReadNext, data.next)
     ),
     jsx(Footer, {
       patreon: config.patreon,
