@@ -28,5 +28,8 @@
     "to": "Traducido a ",
     "separator": ", ",
     "lastSeparator": " y "
+  },
+  "readNext": {
+    "copy": "Leer a continuación: "
   }
 }
