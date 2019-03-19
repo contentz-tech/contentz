@@ -10,6 +10,9 @@ const cli = meow(
   $ ${chalk.cyan(
     "contentz social <path>"
   )} Generate the social images for the given files
+  $ ${chalk.cyan(
+    "contentz write <path>"
+  )} Generate a base article inside "/articles" with the current date
   $ ${chalk.cyan("contentz help")} Show this message
 `,
   {
@@ -25,7 +28,7 @@ if (!cmd) require("./src/build")(files);
 const commands = {
   build: require("./src/build"),
   social: require("./src/social"),
-  write: () => {},
+  write: require("./src/write"),
   page: () => {}
 };
 
