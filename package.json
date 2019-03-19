@@ -34,10 +34,12 @@
     "pretty": "prettier --check 'src/**/*.js'"
   },
   "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.7",
     "@mdx-js/mdx": "^0.17.5",
     "@mdx-js/tag": "^0.17.5",
-    "buble": "^0.19.6",
     "chalk": "^2.4.2",
     "cpy": "^7.0.1",
     "date-fns": "^1.30.1",
