@@ -36,7 +36,22 @@ async function render(article, config) {
 
   await writeFile(tmpPath, article.content.code, "utf8");
 
-  const Component = require(join(process.cwd(), tmpPath));
+  let Component;
+  try {
+    Component = require(join(process.cwd(), tmpPath));
+    if (Component.hasOwnProperty("default")) {
+      Component = Component.default;
+    }
+  } catch (error) {
+    if (error.code === "MODULE_NOT_FOUND") {
+      console.error(
+        `Error: The module ${error.message.slice(
+          "Cannot find module ".length
+        )} in the file '${article.path}' could not be found.`
+      );
+      process.exit(1);
+    }
+  }
 
   const messages = await i18n();
 
