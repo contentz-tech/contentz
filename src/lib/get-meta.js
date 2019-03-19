@@ -7,6 +7,11 @@ function getMeta(file) {
   const extracted = matter(file.content);
   const data = Object.assign(
     extracted.data,
+    !extracted.data.date
+      ? { date: new Date() }
+      : !(extracted.data.date instanceof Date)
+      ? { date: new Date(extracted.data.date) }
+      : { date: extracted.data.date },
     extracted.data.tags && typeof extracted.data.tags === "string"
       ? {
           tags: extracted.data.tags.split(/,\s?/)
