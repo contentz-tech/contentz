@@ -7,6 +7,7 @@ function getMeta(file) {
   const extracted = matter(file.content);
   const data = Object.assign(
     extracted.data,
+    { toc: extracted.data.toc || false },
     {
       date: !extracted.data.date
         ? new Date()
