@@ -14,6 +14,9 @@ exports.UL = props =>
         "@media (max-width: 767px)": {
           marginLeft: 0,
           paddingLeft: "2rem"
+        },
+        ul: {
+          paddingLeft: "3.25rem"
         }
       }
     })
@@ -32,6 +35,9 @@ exports.OL = props =>
         "@media (max-width: 767px)": {
           marginLeft: 0,
           paddingLeft: "2rem"
+        },
+        ol: {
+          paddingLeft: "3.25rem"
         }
       }
     })
