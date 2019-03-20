@@ -1,4 +1,5 @@
 const { join } = require("path");
+const getTOC = require("markdown-toc");
 
 const render = require("./render");
 const { makeDir, writeFile } = require("./fs");
@@ -33,9 +34,14 @@ async function renderArticle(article, config) {
   try {
     const metadata = getMeta(article);
     title = metadata.data.title;
-    const content = await parseMDX(metadata.content);
+    const [content, toc] = await Promise.all([
+      parseMDX(metadata.content),
+      metadata.data.toc
+        ? parseMDX(getTOC(metadata.content).content)
+        : Promise.resolve(null)
+    ]);
     const file = await render(
-      { ...article, ...metadata, content, path: article.path },
+      { ...article, ...metadata, content, toc, path: article.path },
       config
     );
     await writeContent(file);

@@ -29,19 +29,13 @@ function renderContent(ui) {
   });
 }
 
-async function render(article, config) {
-  const tmpPath = join("./.tmp", article.path).replace("mdx", "js");
-
-  await makeDir(tmpPath.slice(0, tmpPath.lastIndexOf("/") + 1));
-
-  await writeFile(tmpPath, article.content.code, "utf8");
-
-  let Component;
+function load(path) {
   try {
-    Component = require(join(process.cwd(), tmpPath));
+    let Component = require(path);
     if (Component.hasOwnProperty("default")) {
       Component = Component.default;
     }
+    return Component;
   } catch (error) {
     if (error.code === "MODULE_NOT_FOUND") {
       console.error(
@@ -52,6 +46,24 @@ async function render(article, config) {
       process.exit(1);
     }
   }
+}
+
+async function render(article, config) {
+  const tmpPath = join("./.tmp", article.path).replace("mdx", "js");
+
+  await makeDir(tmpPath.slice(0, tmpPath.lastIndexOf("/") + 1));
+
+  await Promise.all([
+    writeFile(tmpPath, article.content.code, "utf8"),
+    article.toc
+      ? writeFile(tmpPath.concat(".toc.js"), article.toc.code, "utf8")
+      : Promise.resolve()
+  ]);
+
+  const Component = load(join(process.cwd(), tmpPath));
+  const TOC = article.toc
+    ? load(join(process.cwd(), tmpPath).concat(".toc.js"))
+    : null;
 
   const messages = await i18n();
 
@@ -59,7 +71,7 @@ async function render(article, config) {
     jsx(
       IntlProvider,
       { locale: config.language || config.lang || "en", messages },
-      jsx(Layout, { ...article, config, Component })
+      jsx(Layout, { ...article, config, TOC, Component })
     )
   );
 

@@ -9,7 +9,7 @@ const CanonicalURL = require("./canonical");
 const Translated = require("./translated");
 const ReadNext = require("./read-next");
 
-function Layout({ config, data, path, Component }) {
+function Layout({ config, data, path, TOC, Component }) {
   if (!data.title) throw new Error("Article title is required!");
   return jsx(
     "div",
@@ -22,6 +22,7 @@ function Layout({ config, data, path, Component }) {
           margin: "0 auto",
           maxWidth: "40em",
           width: "100%",
+          position: "relative",
           "@media (max-width: 40em)": {
             fontSize: "0.9em",
             boxSizing: "border-box",
@@ -29,6 +30,43 @@ function Layout({ config, data, path, Component }) {
           }
         }
       },
+      TOC &&
+        jsx(
+          "aside",
+          {
+            css: {
+              position: "sticky",
+              top: "98.5px",
+              a: {
+                color: "black"
+              },
+              "@media (max-width: 1400px)": {
+                display: "none"
+              }
+            }
+          },
+          jsx(TOC, {
+            components: {
+              ...ui,
+              wrapper: props =>
+                jsx("div", {
+                  css: {
+                    position: "absolute",
+                    right: "110%",
+                    width: "30vw",
+                    maxWidth: "250px",
+                    ul: {
+                      listStyleType: "none",
+                      ul: {
+                        listStyleType: "square"
+                      }
+                    }
+                  },
+                  ...props
+                })
+            }
+          })
+        ),
       jsx(Title, null, data.title),
       data.date && jsx(Date, { date: data.date }),
       data.description && jsx(Description, null, data.description),

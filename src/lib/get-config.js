@@ -4,7 +4,8 @@ const { readFile } = require("./fs");
 
 const defaultConfig = {
   title: "Just another Contentz site",
-  description: ""
+  description: "",
+  toc: false
 };
 
 let config = null;
