@@ -110,16 +110,20 @@ function Document({
         value: "summary_large_image",
         content: "summary_large_image"
       }),
-      jsx("meta", {
-        name: "twitter:site",
-        value: `@${config.social.twitter}`,
-        content: `@${config.social.twitter}`
-      }),
-      jsx("meta", {
-        name: "twitter:creator",
-        value: `@${config.social.twitter}`,
-        content: `@${config.social.twitter}`
-      }),
+      config.social &&
+        config.social.twitter &&
+        jsx("meta", {
+          name: "twitter:site",
+          value: `@${config.social.twitter}`,
+          content: `@${config.social.twitter}`
+        }),
+      config.social &&
+        config.social.twitter &&
+        jsx("meta", {
+          name: "twitter:creator",
+          value: `@${config.social.twitter}`,
+          content: `@${config.social.twitter}`
+        }),
       jsx("meta", {
         name: "twitter:url",
         value: formatURL(config.domain, path),
