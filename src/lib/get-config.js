@@ -5,6 +5,7 @@ const { readFile, exists } = require("./fs");
 const defaultConfig = {
   title: "Just another Contentz site",
   description: "",
+  language: "en",
   toc: false
 };
 
