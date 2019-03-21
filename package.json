@@ -1,7 +1,7 @@
 {
   "name": "contentz",
   "description": "Write MDX, get a highly optimized HTML",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "bin": "./cli.js",
   "files": [
     "src",
