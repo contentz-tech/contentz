@@ -9,8 +9,12 @@ const { checkCache } = require("./cache");
 const getMeta = require("./get-meta");
 const OpenGraph = require("../components/open-graph");
 
-const CHROME_PATH =
+let CHROME_PATH =
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
+
+if (process.platform === 'linux') {
+  CHROME_PATH = '/usr/bin/google-chrome';
+}
 
 function renderContent(ui) {
   return new Promise(resolve => {
