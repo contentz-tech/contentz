@@ -22,7 +22,7 @@ async function main([path], force = false) {
     "---",
     "title: Just Another Contentz Article",
     `date: ${new Date().toJSON()}`,
-    "published: false",
+    "published: false # Change to `true` to list it",
     "---",
     "",
     "Here be dragons",
