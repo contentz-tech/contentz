@@ -30,46 +30,39 @@ function Layout({ config, data, path, TOC, Component }) {
           }
         }
       },
+      data.date && jsx(Date, { date: data.date }),
+      jsx(Title, null, data.title),
+      data.description && jsx(Description, null, data.description),
       TOC &&
-        jsx(
-          "aside",
-          {
-            css: {
-              position: "sticky",
-              top: "98.5px",
-              a: {
-                color: "black"
-              },
-              "@media (max-width: 1400px)": {
-                display: "none"
-              }
-            }
-          },
-          jsx(TOC, {
-            components: {
-              ...ui,
-              wrapper: props =>
-                jsx("div", {
-                  css: {
+        jsx(TOC, {
+          components: {
+            ...ui,
+            wrapper: props =>
+              jsx("aside", {
+                css: {
+                  a: {
+                    color: "black"
+                  },
+                  ul: {
+                    listStyleType: "none",
+                    paddingLeft: 0,
+                    marginLeft: 0,
+                    ul: {
+                      listStyleType: "square",
+                      paddingLeft: "1em"
+                    }
+                  },
+                  "@media (min-width: 1400px)": {
                     position: "absolute",
                     right: "110%",
                     width: "30vw",
-                    maxWidth: "250px",
-                    ul: {
-                      listStyleType: "none",
-                      ul: {
-                        listStyleType: "square"
-                      }
-                    }
-                  },
-                  ...props
-                })
-            }
-          })
-        ),
-      jsx(Title, null, data.title),
-      data.date && jsx(Date, { date: data.date }),
-      data.description && jsx(Description, null, data.description),
+                    maxWidth: "250px"
+                  }
+                },
+                ...props
+              })
+          }
+        }),
       data.canonical_url && jsx(CanonicalURL, { value: data.canonical_url }),
       data.translated_from && jsx(Translated.From, data.translated_from),
       data.translated_to &&
