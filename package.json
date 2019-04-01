@@ -51,6 +51,7 @@
     "globby": "^9.0.0",
     "gray-matter": "^4.0.2",
     "is-absolute": "^1.0.0",
+    "local-chrome": "^0.1.0",
     "markdown-toc": "^1.2.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1",

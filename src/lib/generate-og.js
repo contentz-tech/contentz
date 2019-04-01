@@ -3,14 +3,10 @@ const { renderStylesToNodeStream } = require("emotion-server");
 const { jsx } = require("@emotion/core");
 const puppeteer = require("puppeteer-core");
 const { join, parse } = require("path");
+const CHROME_PATH = require("local-chrome");
 
 const { exists, writeFile, makeDir } = require("./fs");
-const { checkCache } = require("./cache");
-const getMeta = require("./get-meta");
 const OpenGraph = require("../components/open-graph");
-
-const CHROME_PATH =
-  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 
 function renderContent(ui) {
   return new Promise(resolve => {
@@ -29,6 +25,7 @@ function renderContent(ui) {
 
 async function generateOG(files) {
   const hasChrome = await exists(CHROME_PATH);
+
   if (!hasChrome) {
     console.error(
       "Google Chrome was not found, it's required to generate the social images."
