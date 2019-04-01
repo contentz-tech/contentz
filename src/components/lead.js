@@ -45,7 +45,7 @@ exports.Date = props => {
       dateTime: props.date.toJSON(),
       css: {
         position: "absolute",
-        right: 0,
+        right: "0.5em",
         bottom: "100%"
       }
     }),
