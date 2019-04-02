@@ -11,16 +11,19 @@ Create Content, Get a Highly Optimized Website
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
 </a>
 
-- Use MDX to write your content
-- Incremental Build
-- Use Frontmatter to define metadata for your content
-- Prefetch every internal link used in your content
+- Use **MDX** to write articles and pages
+- Support **Incremental Build**
+- **Offline First**
+- Use **Frontmatter** to define metadata for your articles and pages
+- **Prefetch** every internal link used in your content
 - Get an archive page with linked and prefetched articles
 - Get a homepage with links to social networks
-- Good Looking Responsive Design
-- Automatic Dark Mode (in Safari)
-- Apply CSS directly in MDX using the `css` prop and the `css` template tag
-- Internationalization
+- Good Looking **Responsive Design**
+- Automatic **Dark Mode** (in Safari)
+- Apply **CSS in MDX** using the `css` prop and the `css` template tag
+- **Internationalization**
+- Generate **social images** (Open Graph) in a single command
+- Automatically generate **table of contents**
 
 ## Install it
 
