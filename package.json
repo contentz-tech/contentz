@@ -1,7 +1,7 @@
 {
   "name": "contentz",
-  "version": "3.2.0",
   "description": "Create Content, Get a Highly Optimized Website",
+  "version": "3.2.1",
   "bin": "./cli.js",
   "files": [
     "src",
