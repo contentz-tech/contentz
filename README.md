@@ -5,7 +5,7 @@
 ![npm version](https://badgen.net/npm/v/contentz)
 ![dependencies](https://badgen.net/david/dep/sergiodxa/contentz)
 
-Write MDX, get highly optimized website.
+Generate Content, Get a Highly Optimized Website
 
 <a href="https://www.patreon.com/sergiodxa">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
