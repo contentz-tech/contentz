@@ -31,14 +31,17 @@ async function main() {
     case "build": {
       const command = require("./src/build");
       await command();
+      return;
     }
     case "social": {
       const command = require("./src/social");
       await command(files);
+      return;
     }
     case "write": {
       const command = require("./src/write");
       await command(files);
+      return;
     }
     default: {
       console.error(`Command ${cmd} is not supported.`);
