@@ -44,6 +44,8 @@ function Header({ title, hasArticles, hasLinks, navigation }) {
           href: "/",
           title: messages.header.mainLinkDescription,
           css: {
+            flex: 1,
+            whiteSpace: "nowrap",
             color: "black",
             textDecoration: "none",
             "@media (prefers-color-scheme: dark)": {
@@ -55,7 +57,14 @@ function Header({ title, hasArticles, hasLinks, navigation }) {
       ),
       jsx(
         "nav",
-        { css: { a: { padding: "0 1em" } } },
+        {
+          css: {
+            overflowX: "auto",
+            margin: "-1em 0",
+            padding: "1em 0",
+            a: { padding: "0 1em" }
+          }
+        },
         hasArticles &&
           jsx(Anchor, { href: "/articles/" }, messages.header.articles),
         hasLinks && jsx(Anchor, { href: "/links/" }, messages.header.links),
