@@ -3,7 +3,6 @@ const { renderStylesToNodeStream } = require("emotion-server");
 const { jsx } = require("@emotion/core");
 const puppeteer = require("puppeteer-core");
 const { join, parse } = require("path");
-const CHROME_PATH = require("local-chrome");
 
 const { exists, writeFile, makeDir } = require("./fs");
 const OpenGraph = require("../components/open-graph");
@@ -24,6 +23,7 @@ function renderContent(ui) {
 }
 
 async function generateOG(files) {
+  const CHROME_PATH = require("local-chrome");
   const hasChrome = await exists(CHROME_PATH);
 
   if (!hasChrome) {
