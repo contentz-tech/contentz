@@ -36,7 +36,7 @@ async function render(links, config) {
           { locale: config.language || config.lang || "en", messages },
           jsx(
             Document,
-            { messages, config, path: "links.mdx" },
+            { data: { published: true }, messages, config, path: "links.mdx" },
             jsx(LinksPage, { messages, config, links })
           )
         )

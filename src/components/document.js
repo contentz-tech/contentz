@@ -55,7 +55,8 @@ function Document({
       jsx("meta", { name: "pagename", content: config.title }),
       jsx("meta", { name: "HandheldFriendly", content: "True" }),
       jsx("meta", { name: "MobileOptimized", content: "320" }),
-      jsx("meta", { name: "robots", content: "index, follow" }),
+      data.published === true &&
+        jsx("meta", { name: "robots", content: "index, follow" }),
       jsx("meta", { name: "theme-color", content: "black" }),
       jsx("meta", {
         name: "apple-mobile-web-app-title",

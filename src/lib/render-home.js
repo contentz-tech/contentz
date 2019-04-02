@@ -28,7 +28,7 @@ async function render(config) {
           { locale: config.language || config.lang || "en", messages },
           jsx(
             Document,
-            { config, messages, path: "home.mdx" },
+            { data: { published: true }, config, messages, path: "home.mdx" },
             jsx(HomePage, { config, messages })
           )
         )

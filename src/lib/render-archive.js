@@ -52,7 +52,12 @@ async function render(config, articles) {
           { locale: config.language || config.lang || "en", messages },
           jsx(
             Document,
-            { config, links, path: "./articles.mdx" },
+            {
+              data: { published: true },
+              config,
+              links,
+              path: "./articles.mdx"
+            },
             jsx(ArchivePage, { config, articles: metadatas })
           )
         )
