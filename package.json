@@ -31,7 +31,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint 'src/**/*.js'",
-    "pretty": "prettier --check 'src/**/*.js'"
+    "pretty": "prettier --check 'src/**/*.js'",
+    "dev:serve": "serve examples/basic/public",
+    "dev:build": "cd examples/basic && node ../../cli.js build; cd -"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
