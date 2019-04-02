@@ -11,6 +11,7 @@ const renderPage = require("./lib/render-page");
 const renderLinks = require("./lib/render-links");
 const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
+const generateSitemap = require("./lib/generate-sitemap");
 const statics = require("./lib/statics");
 const generateSW = require("./lib/generate-sw");
 const { writeCache } = require("./lib/cache");
@@ -43,6 +44,7 @@ async function main() {
       renderLinks(links, config),
       renderError(config),
       generateRSS(articles, config),
+      generateSitemap(articles, pages, config),
       generateSW(config)
     ]);
     await Promise.all([
