@@ -147,7 +147,7 @@ function Document({
       }),
       jsx("meta", { name: "twitter:summary", content: config.description }),
       jsx("link", { rel: "prefetch", href: "/" }),
-      jsx("link", { rel: "prefetch", href: "/articles/" }),
+      config.hasArticles && jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
       links
         .concat(
