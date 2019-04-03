@@ -7,6 +7,7 @@ const pkg = require("./package.json");
 async function main() {
   const cli = meow(
     `${chalk.white("Usage")}
+    $ ${chalk.cyan("contentz init")} Initialize a new project using Contentz
     $ ${chalk.cyan("contentz build")} Build the whole website
     $ ${chalk.cyan(
       "contentz social <path>"
@@ -40,6 +41,11 @@ async function main() {
     }
     case "write": {
       const command = require("./src/write");
+      await command(files);
+      return;
+    }
+    case "init": {
+      const command = require("./src/init");
       await command(files);
       return;
     }
