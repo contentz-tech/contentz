@@ -3,11 +3,13 @@ const del = require("del");
 const getArticles = require("./lib/get-articles");
 const getPages = require("./lib/get-pages");
 const getConfig = require("./lib/get-config");
+const getSlides = require("./lib/get-slides");
 const getLinks = require("./lib/get-links");
 const renderArticle = require("./lib/render-article");
 const renderHome = require("./lib/render-home");
 const renderArchive = require("./lib/render-archive");
 const renderPage = require("./lib/render-page");
+const renderSlide = require("./lib/render-slide");
 const renderLinks = require("./lib/render-links");
 const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
@@ -20,17 +22,21 @@ const { writeCache } = require("./lib/cache");
 async function main() {
   console.log("Preparing to start.");
   try {
-    const [config, articles, pages, links] = await Promise.all([
+    const [config, articles, pages, links, slides] = await Promise.all([
       getConfig(),
       getArticles(),
       getPages(),
-      getLinks()
+      getLinks(),
+      getSlides()
     ]);
     if (links.length > 0) {
       config.hasLinks = true;
     }
     if (articles.length > 0) {
       config.hasArticles = true;
+    }
+    if (slides.length > 0) {
+      config.hasSlides = true;
     }
     if (config.incremental !== false) {
       config.incremental = true;
@@ -39,7 +45,8 @@ async function main() {
     await Promise.all([
       statics(),
       ...articles.map(article => renderArticle(article, config)),
-      ...pages.map(article => renderPage(article, config)),
+      ...pages.map(page => renderPage(page, config)),
+      ...slides.map(slide => renderSlide(slide, config)),
       renderHome(config),
       renderArchive(config, articles),
       renderLinks(links, config),

@@ -3,7 +3,7 @@ const { jsx } = require("@emotion/core");
 const { Anchor } = require("./html/text");
 const { useIntl } = require("./intl");
 
-function Header({ title, hasArticles, hasLinks, navigation }) {
+function Header({ title, hasArticles, hasLinks, hasSlides, navigation }) {
   const { messages } = useIntl();
 
   return jsx(
@@ -68,6 +68,7 @@ function Header({ title, hasArticles, hasLinks, navigation }) {
         hasArticles &&
           jsx(Anchor, { href: "/articles/" }, messages.header.articles),
         hasLinks && jsx(Anchor, { href: "/links/" }, messages.header.links),
+        hasSlides && jsx(Anchor, { href: "/slides/" }, messages.header.slides),
         navigation &&
           navigation.map(({ name, path }) =>
             jsx(

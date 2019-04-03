@@ -7,7 +7,8 @@
   "header": {
     "mainLinkDescription": "Go back to articles list",
     "articles": "Articles",
-    "links": "Links"
+    "links": "Links",
+    "slides": "Talks"
   },
   "footer": { "editOnGitHub": "Edit it on GitHub" },
   "lead": { "postedOn": "Posted on " },
@@ -16,7 +17,8 @@
     "description": "The page or article you have tried to access was not found",
     "goHome": "Go to the Home",
     "goArticles": "Go to the list of Articles",
-    "goLinks": "Go to the list of Shared Links"
+    "goLinks": "Go to the list of Shared Links",
+    "goSlides": "Go to the list of Talks"
   },
   "archive": {
     "title": "Articles",

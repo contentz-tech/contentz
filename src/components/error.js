@@ -46,7 +46,9 @@ function ErrorPage({ config = {} } = {}) {
         config.hasArticles &&
           jsx(Anchor, { href: "/articles/" }, messages.error.goArticles),
         config.hasLinks &&
-          jsx(Anchor, { href: "/links/" }, messages.error.goLinks)
+          jsx(Anchor, { href: "/links/" }, messages.error.goLinks),
+        config.hasSlides &&
+          jsx(Anchor, { href: "/slides/" }, messages.error.goSlides)
       )
     )
   );

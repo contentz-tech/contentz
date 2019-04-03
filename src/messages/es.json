@@ -7,7 +7,8 @@
   "header": {
     "mainLinkDescription": "Volver a la lista de artículos",
     "articles": "Artículos",
-    "links": "Enlaces"
+    "links": "Enlaces",
+    "slides": "Charlas"
   },
   "footer": { "editOnGitHub": "Editar en GitHub" },
   "lead": { "postedOn": "Publicado el " },
@@ -16,7 +17,8 @@
     "description": "La página o artículo que intentaste acceder no existe",
     "goHome": "Volver al inicio",
     "goArticles": "Ir a la lista de artículos",
-    "goLinks": "Ir a la lista de enlaces compartidos"
+    "goLinks": "Ir a la lista de enlaces compartidos",
+    "goSlides": "Ir a la lista de charlas"
   },
   "archive": {
     "title": "Artículos",

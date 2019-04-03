@@ -149,6 +149,7 @@ function Document({
       jsx("link", { rel: "prefetch", href: "/" }),
       config.hasArticles && jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
+      config.hasSlides && jsx("link", { rel: "prefetch", href: "/slides/" }),
       links
         .concat(
           (config.navigation || [])
