@@ -9,7 +9,7 @@ function Card(props) {
         backgroundColor: "white",
         borderRadius: "5px",
         transition: "all 0.2s ease 0s",
-        userSelect: "none",
+        userSelect: props.selectable ? "text" : "none",
         margin: "1.5em -2em 3em",
         padding: "1em 2em",
         "@media (prefers-color-scheme: dark)": {

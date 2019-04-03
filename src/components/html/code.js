@@ -24,7 +24,7 @@ exports.Code = props =>
 exports.Pre = props =>
   jsx(
     Card,
-    null,
+    { selectable: true },
     jsx("pre", {
       ...props,
       css: {
