@@ -6,6 +6,8 @@
   "files": [
     "src",
     "cli.js",
+    "video.js",
+    "card.js",
     "package.json",
     "README.md",
     "yarn.lock"
