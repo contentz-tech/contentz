@@ -27,16 +27,8 @@ const pkg = (name, version) =>
       },
       keywords: ["contentz", "website"],
       private: true,
-      dependencies: {
-        contentz: version
-      },
-      devDependencies: {
-        concurrently: "4.1.0",
-        husky: "1.3.1",
-        "lint-staged": "8.1.5",
-        serve: "10.1.2",
-        watch: "1.0.2"
-      },
+      dependencies: {},
+      devDependencies: {},
       husky: {
         hooks: {
           "pre-commit": "lint-staged"
@@ -71,7 +63,12 @@ async function main([name = null]) {
   console.log("Initializing new project on %s", cwd);
   
   try {
+    console.log("Creating directories...");
     cwd !== process.cwd() && (await makeDir(cwd));
+    await Promise.all([
+      makeDir(join(cwd, "articles")),
+      makeDir(join(cwd, "pages")),
+    ])
 
     console.log("Initializing Git repository...");
     await execa.shell(`cd ${cwd} && git init ; cd -`);
@@ -89,7 +86,7 @@ async function main([name = null]) {
     ]);
 
     console.log("Installing dependencies (it could take a few minutes)...");
-    await execa.shell(`cd ${cwd} && yarn install ; cd -`);
+    await execa.shell(`cd ${cwd} && yarn add contentz && yarn add -D concurrently husky lint-staged serve watch ; cd -`);
     console.log("Building website for the first time...");
     await execa.shell(`cd ${cwd} && yarn build ; cd -`);
   } finally {
