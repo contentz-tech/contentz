@@ -73,6 +73,9 @@ async function main([name = null]) {
   try {
     cwd !== process.cwd() && (await makeDir(cwd));
 
+    console.log("Initializing Git repository...");
+    await execa.shell(`cd ${cwd} && git init ; cd -`);
+
     console.log("Writing files to disk...");
     await Promise.all([
       writeFile(join(cwd, ".gitignore"), gitIgnore, "utf8"),
