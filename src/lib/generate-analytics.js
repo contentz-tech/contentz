@@ -1,8 +1,6 @@
 const { minify } = require("terser");
 
 const { writeFile, makeDir } = require("./fs");
-const { readCache } = require("./cache");
-const getSHA = require("./get-sha");
 
 async function generateAnalytics(config) {
   await writeFile(
@@ -21,7 +19,7 @@ async function generateAnalytics(config) {
 async function generator(config) {
   try {
     await makeDir("./public");
-    await Promise.all([generateAnalytics(config)]);
+    await generateAnalytics(config);
   } finally {
     console.log("Analytics generated");
   }
