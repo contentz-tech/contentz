@@ -17,6 +17,7 @@ async function generateAnalytics(config) {
 }
 
 async function generator(config) {
+  if (!config.analytics) return;
   try {
     await makeDir("./public");
     await generateAnalytics(config);
