@@ -4,6 +4,7 @@ const Card = require("../card");
 exports.Image = props => {
   const img = jsx("img", {
     ...props,
+    loading: "lazy",
     css: {
       maxWidth: "100%",
       verticalAlign: "top"
