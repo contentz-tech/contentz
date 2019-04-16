@@ -32,9 +32,14 @@ async function generateSlideJS() {
     "./public/slide.js",
     minify(
       [
+        "const totalSlides = parseInt(",
+        '  document.getElementById("slide").dataset.total,',
+        "  10",
+        ");",
         "function next(pathname) {",
         '  if (pathname.endsWith("/")) return pathname + 1',
         '  const number = parseInt(pathname.slice(pathname.lastIndexOf("/") + 1), 10) + 1;',
+        "  if (number > totalSlides) return pathname;",
         '  return pathname.slice(0, pathname.lastIndexOf("/") + 1) + number;',
         "}",
         "function prev(pathname) {",

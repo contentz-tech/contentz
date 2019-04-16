@@ -45,6 +45,8 @@ function Slide({ config, data, path, Component, totalSlides }) {
     jsx(
       "section",
       {
+        id: "slide",
+        "data-total": totalSlides,
         css: {
           display: "flex",
           justifyContent: "center",
