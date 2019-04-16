@@ -32,7 +32,7 @@ const ui = {
   pre: props => {
     if (props.children.props.props.className === "language-file-tree")
       return props.children;
-    return jsx(Pre, props);
+    return jsx(Pre, { heightLimit: true, ...props });
   }
 };
 

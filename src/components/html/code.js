@@ -21,7 +21,7 @@ exports.Code = props =>
     })
   );
 
-exports.Pre = props =>
+exports.Pre = ({ heightLimit = false, ...props }) =>
   jsx(
     Card,
     { selectable: true },
@@ -29,6 +29,7 @@ exports.Pre = props =>
       ...props,
       css: {
         overflowX: "scroll",
+        maxHeight: heightLimit ? "30vh" : "none",
         code: {
           color: "black",
           "@media (prefers-color-scheme: dark)": {
