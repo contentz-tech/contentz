@@ -10,9 +10,6 @@ function Header({ title, hasArticles, hasLinks, hasSlides, navigation }) {
     "header",
     {
       css: {
-        position: "sticky",
-        top: 0,
-        zIndex: 10,
         background: "white",
         borderBottom: "1px solid #eaeaea",
         boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.12)",
