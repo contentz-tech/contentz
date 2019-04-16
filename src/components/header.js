@@ -65,7 +65,7 @@ function Header({ title, hasArticles, hasLinks, hasSlides, navigation }) {
         hasArticles &&
           jsx(Anchor, { href: "/articles/" }, messages.header.articles),
         hasLinks && jsx(Anchor, { href: "/links/" }, messages.header.links),
-        // hasSlides && jsx(Anchor, { href: "/slides/" }, messages.header.slides),
+        hasSlides && jsx(Anchor, { href: "/slides/" }, messages.header.slides),
         navigation &&
           navigation.map(({ name, path }) =>
             jsx(

@@ -10,6 +10,7 @@ const renderHome = require("./lib/render-home");
 const renderArchive = require("./lib/render-archive");
 const renderPage = require("./lib/render-page");
 const renderSlide = require("./lib/render-slide");
+const renderSlides = require("./lib/render-slides");
 const renderLinks = require("./lib/render-links");
 const renderError = require("./lib/render-error");
 const generateRSS = require("./lib/generate-rss");
@@ -50,6 +51,7 @@ async function main() {
       ...slides.map(slide => renderSlide(slide, config)),
       renderHome(config),
       renderArchive(config, articles),
+      renderSlides(config, slides),
       renderLinks(links, config),
       renderError(config),
       generateRSS(articles, config),

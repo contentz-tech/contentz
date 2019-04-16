@@ -4,6 +4,7 @@
     "link": "Become a Patreon and help me continue writing!"
   },
   "links": { "title": "Shared Links" },
+  "slides": { "title": "Talks" },
   "header": {
     "mainLinkDescription": "Go back to articles list",
     "articles": "Articles",
