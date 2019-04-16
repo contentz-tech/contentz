@@ -11,17 +11,43 @@ const defaultConfig = {
 
 let config = null;
 
-async function getConfig() {
-  if (config) return config;
-  if (!(await exists("./config.yml"))) {
-    config = { ...defaultConfig };
-    return config;
+function parsePackage(pkgRaw) {
+  const pkg = JSON.parse(pkgRaw);
+  let result = {};
+  if (pkg.name) {
+    result.title = pkg.name;
   }
-  const configContent = await readFile("./config.yml", "utf8");
-  config = {
-    ...defaultConfig,
-    ...matter(configContent).data
-  };
+  if (pkg.description) {
+    result.description = pkg.description;
+  }
+  if (pkg.repository) {
+    result.repository = pkg.repository;
+  }
+  if (pkg.contentz) {
+    result = {
+      ...result,
+      ...pkg.contentz
+    };
+  }
+  return result;
+}
+
+async function getConfig({ cache = true } = {}) {
+  if (config && cache) return config;
+
+  config = Object.assign({}, defaultConfig);
+
+  if (await exists("./package.json")) {
+    Object.assign(
+      config,
+      parsePackage(await readFile("./package.json", "utf8"))
+    );
+  }
+
+  if (await exists("./config.yml")) {
+    Object.assign(config, matter(await readFile("./config.yml", "utf8")).data);
+  }
+
   return config;
 }
 
