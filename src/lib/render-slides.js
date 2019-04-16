@@ -52,7 +52,7 @@ async function render(config, slides) {
           { locale: config.language || config.lang || "en", messages },
           jsx(
             Document,
-            { data: { published: true }, messages, config, path: "links.mdx" },
+            { data: { published: true }, messages, config, path: "slides.mdx" },
             jsx(SlidesPage, { messages, config, slides: slides.map(format) })
           )
         )

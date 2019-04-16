@@ -19,6 +19,7 @@ async function main(paths) {
         case "articles":
         case "archive":
         case "links":
+        case "slides":
         case "error": {
           return path;
         }
@@ -65,6 +66,14 @@ async function main(paths) {
             title: "Error 404",
             description:
               "The page or article you have tried to access was not found"
+          }
+        };
+      }
+      case "slides": {
+        return {
+          path: "slides.mdx",
+          data: {
+            title: "Talks"
           }
         };
       }
