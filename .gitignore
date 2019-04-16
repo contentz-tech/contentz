@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Jetbrains Ides config.
+.idea/
 # Runtime data
 pids
 *.pid

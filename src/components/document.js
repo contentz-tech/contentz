@@ -147,7 +147,8 @@ function Document({
       }),
       jsx("meta", { name: "twitter:summary", content: config.description }),
       jsx("link", { rel: "prefetch", href: "/" }),
-      config.hasArticles && jsx("link", { rel: "prefetch", href: "/articles/" }),
+      config.hasArticles &&
+        jsx("link", { rel: "prefetch", href: "/articles/" }),
       config.hasLinks && jsx("link", { rel: "prefetch", href: "/links/" }),
       config.hasSlides && jsx("link", { rel: "prefetch", href: "/slides/" }),
       links
@@ -177,6 +178,12 @@ function Document({
       children
         ? jsx("main", null, children)
         : jsx("main", { dangerouslySetInnerHTML: { __html: content } }),
+      config.analytics &&
+        jsx("script", {
+          async: true,
+          src: `https://www.googletagmanager.com/gtag/js?id=${config.analytics}`
+        }),
+      config.analytics && jsx("script", { src: "/load-analytics.js" }),
       config.sw !== false
         ? jsx("script", { src: "/load-sw.js" })
         : jsx("script", { src: "/unload-sw.js" })

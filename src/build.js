@@ -17,6 +17,7 @@ const generateSitemap = require("./lib/generate-sitemap");
 const generateRobotsTXT = require("./lib/generate-robots-txt");
 const statics = require("./lib/statics");
 const generateSW = require("./lib/generate-sw");
+const generateAnalytics = require("./lib/generate-analytics");
 const { writeCache } = require("./lib/cache");
 
 async function main() {
@@ -54,7 +55,8 @@ async function main() {
       generateRSS(articles, config),
       generateSitemap(articles, pages, config),
       generateRobotsTXT(articles, pages),
-      generateSW(config)
+      generateSW(config),
+      generateAnalytics(config)
     ]);
     await Promise.all([
       del("./.tmp/**"),
