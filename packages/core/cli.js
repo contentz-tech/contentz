@@ -35,7 +35,7 @@ async function main() {
       return;
     }
     case "social": {
-      const command = require("./src/social");
+      const command = require("@contentz/social");
       await command(files);
       return;
     }

@@ -4,7 +4,7 @@ const { jsx } = require("@emotion/core");
 const puppeteer = require("puppeteer-core");
 const { join, parse } = require("path");
 
-const { exists, writeFile, makeDir } = require("./fs");
+const { exists, writeFile, makeDir } = require("@contentz/utils/fs");
 const OpenGraph = require("../components/open-graph");
 
 function renderContent(ui) {

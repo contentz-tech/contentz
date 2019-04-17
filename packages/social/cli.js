@@ -8,11 +8,11 @@ const command = require("./src/index");
 async function main() {
   const cli = meow(
     `${chalk.white("Usage")}
-    $ ${chalk.cyan("contentz-write")} Write a new article using Contentz
-    $ ${chalk.cyan("contentz-write help")} Show this message
+    $ ${chalk.cyan("contentz-social")} Generate a social image for a content
+    $ ${chalk.cyan("contentz-social help")} Show this message
   `,
     {
-      description: `${chalk.cyan("Contentz Write")} - ${pkg.description}`
+      description: `${chalk.cyan("Contentz Social")} - ${pkg.description}`
     }
   );
 

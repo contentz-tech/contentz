@@ -1,11 +1,10 @@
 const isAbsolute = require("is-absolute");
 const relative = require("relative");
+const getConfig = require("@contentz/utils/get-config");
+const getMeta = require("@contentz/utils/get-meta");
+const { readFile } = require("@contentz/utils/fs");
 
-const getConfig = require("./lib/get-config");
-const getMeta = require("./lib/get-meta");
 const generateOG = require("./lib/generate-og");
-
-const { readFile } = require("./lib/fs");
 
 async function main(paths) {
   console.log("Preparing to start.");

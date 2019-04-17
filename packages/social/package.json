@@ -1,9 +1,14 @@
 {
-  "name": "@contentz/utils",
-  "description": "Utility functions for Contentz",
-  "version": "3.11.0",
+  "name": "@contentz/social",
+  "description": "Generate social images for Contentz",
+  "version": "3.12.1",
+  "main": "src/index.js",
+  "bin": {
+    "contentz-social": "./cli.js"
+  },
   "files": [
-    "fs.js",
+    "src",
+    "cli.js",
     "package.json"
   ],
   "keywords": [
@@ -30,7 +35,15 @@
   },
   "license": "MIT",
   "dependencies": {
-    "gray-matter": "^4.0.2",
-    "mkdirp": "^0.5.1"
+    "@contentz/utils": "^3.11.0",
+    "@emotion/core": "^10.0.10",
+    "chalk": "^2.4.2",
+    "emotion-server": "^10.0.9",
+    "is-absolute": "^1.0.0",
+    "local-chrome": "^0.1.0",
+    "meow": "^5.0.0",
+    "puppeteer-core": "^1.14.0",
+    "react-dom": "^16.8.6",
+    "relative": "^3.0.2"
   }
 }
