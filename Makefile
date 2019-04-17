@@ -5,4 +5,3 @@ publish:
 	cd packages/social && npm publish --access public ; cd -
 	cd packages/init && npm publish --access public ; cd -
 	cd packages/core && npm publish --access public ; cd -
-
