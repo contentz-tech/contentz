@@ -40,7 +40,7 @@ async function main() {
       return;
     }
     case "write": {
-      const command = require("./src/write");
+      const command = require("@contentz/write");
       await command(files);
       return;
     }
