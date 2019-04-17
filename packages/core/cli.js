@@ -45,7 +45,7 @@ async function main() {
       return;
     }
     case "init": {
-      const command = require("./src/init");
+      const command = require("@contentz/init");
       await command(files);
       return;
     }
