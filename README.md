@@ -4,6 +4,7 @@
 ![releases](https://badgen.net/github/releases/sergiodxa/contentz)
 ![npm version](https://badgen.net/npm/v/contentz)
 ![dependencies](https://badgen.net/david/dep/sergiodxa/contentz)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 Create Content, Get a Highly Optimized Website
 
