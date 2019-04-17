@@ -2,7 +2,7 @@ const prompt = require("cli-prompt");
 const { join, parse } = require("path");
 const openEditor = require("open-editor");
 
-const { writeFile, exists, makeDir } = require("./lib/fs");
+const { writeFile, exists, makeDir } = require("@contentz/utils/fs");
 
 async function main([path], force = false) {
   if (!force && (await exists(join("./articles/", path)))) {
