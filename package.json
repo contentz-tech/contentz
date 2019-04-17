@@ -3,6 +3,9 @@
   "description": "Create Content, Get a Highly Optimized Website",
   "private": true,
   "repository": "https://github.com/sergiodxa/contentz.git",
+  "workspaces": [
+    "packages/*"
+  ],
   "author": {
     "name": "Sergio Xalambrí",
     "email": "hello@sergiodxa.com",
