@@ -1,7 +1,7 @@
 {
   "name": "@contentz/social",
   "description": "Generate social images for Contentz",
-  "version": "3.13.0",
+  "version": "3.13.1",
   "main": "src/index.js",
   "bin": {
     "contentz-social": "./cli.js"
@@ -35,7 +35,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@contentz/utils": "^3.13.0",
+    "@contentz/utils": "^3.13.1",
     "@emotion/core": "^10.0.10",
     "chalk": "^2.4.2",
     "emotion-server": "^10.0.9",
