@@ -43,6 +43,7 @@
     "local-chrome": "^0.1.0",
     "meow": "^5.0.0",
     "puppeteer-core": "^1.14.0",
+    "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "relative": "^3.0.2"
   }
