@@ -61,14 +61,14 @@ incremental: false # Change to \`true\` if your server support keeping \`.cache\
 async function main([name = null]) {
   const cwd = name ? join(process.cwd(), name) : process.cwd();
   console.log("Initializing new project on %s", cwd);
-  
+
   try {
     console.log("Creating directories...");
     cwd !== process.cwd() && (await makeDir(cwd));
     await Promise.all([
       makeDir(join(cwd, "articles")),
-      makeDir(join(cwd, "pages")),
-    ])
+      makeDir(join(cwd, "pages"))
+    ]);
 
     console.log("Initializing Git repository...");
     await execa.shell(`cd ${cwd} && git init ; cd -`);
@@ -86,7 +86,9 @@ async function main([name = null]) {
     ]);
 
     console.log("Installing dependencies (it could take a few minutes)...");
-    await execa.shell(`cd ${cwd} && yarn add contentz && yarn add -D concurrently husky lint-staged serve watch ; cd -`);
+    await execa.shell(
+      `cd ${cwd} && yarn add contentz && yarn add -D concurrently husky lint-staged serve watch ; cd -`
+    );
     console.log("Building website for the first time...");
     await execa.shell(`cd ${cwd} && yarn build ; cd -`);
   } finally {

@@ -15,7 +15,7 @@ const renderContent = require("./render-content");
 const isLocalURL = url => !parseURL(url).resource;
 
 async function render(article, config) {
-  const tmpPath = join("./.tmp", article.path ).replace("mdx", "js");
+  const tmpPath = join("./.tmp", article.path).replace("mdx", "js");
 
   await makeDir(tmpPath.slice(0, tmpPath.lastIndexOf("/") + 1));
 
