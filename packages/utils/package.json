@@ -4,6 +4,8 @@
   "version": "3.13.0",
   "files": [
     "fs.js",
+    "get-config.js",
+    "get-meta.js",
     "package.json"
   ],
   "keywords": [
