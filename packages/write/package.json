@@ -1,7 +1,7 @@
 {
   "name": "@contentz/write",
   "description": "Write a new Contentz article",
-  "version": "3.12.1",
+  "version": "3.13.0",
   "main": "src/index.js",
   "bin": {
     "contentz-write": "./cli.js"
@@ -35,7 +35,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@contentz/utils": "^3.11.0",
+    "@contentz/utils": "^3.13.0",
     "chalk": "^2.4.2",
     "cli-prompt": "^0.6.0",
     "meow": "^5.0.0",
