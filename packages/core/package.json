@@ -1,7 +1,7 @@
 {
   "name": "contentz",
   "description": "Create Content, Get a Highly Optimized Website",
-  "version": "3.11.0",
+  "version": "3.12.0",
   "bin": "./cli.js",
   "files": [
     "src",
@@ -39,7 +39,7 @@
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@contentz/init": "^3.11.0",
-    "@contentz/write": "^3.11.0",
+    "@contentz/write": "^3.12.0",
     "@emotion/babel-preset-css-prop": "^10.0.9",
     "@emotion/core": "^10.0.7",
     "@mdx-js/mdx": "^0.17.5",
