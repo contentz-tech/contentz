@@ -58,6 +58,7 @@ language: en
 repository: https://github.com/sergiodxa/personal-site/
 email: hello@sergiodxa.com
 patreon: sergiodxa
+analytics: UA-XXXXXXXXX-2
 social:
   twitter: sergiodxa
   github: sergiodxa
@@ -83,6 +84,7 @@ navigation:
 | repository  | The GitHub repository hosting the website, used in the footer of articles and pages | No (default: hide link to edit)            |
 | email       | Your email address, used on the Email icon in the homepage                          | No (default: hide icon)                    |
 | patreon     | Your Patreon username, used in the homepage and the footer                          | No (default: hiden patreon message)        |
+| analytics   | Your Analytics UA                                                                   | No (default: hide analytics)               |
 | social      | A list of your social networks, used to link them in the homepage                   | No (default: hide social icons)            |
 | navigation  | A list of pages to link in the header                                               | No (default: don't add extra links)        |
 | sw          | Set it as `false` if you want to disable SW generation                              | No (default: true)                         |
