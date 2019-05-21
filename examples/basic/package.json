@@ -1,3 +1,6 @@
 {
-  "name": "basic-example"
+  "name": "basic-example",
+  "dependencies": {
+    "contentz": "3.13.2"
+  }
 }
