@@ -7,7 +7,7 @@ const { Code, Pre } = require("./html/code");
 const FileTree = require("./file-tree");
 
 const ui = {
-  wrapper: props => jsx("article", { ...props, css: { fontSize: "1vw" } }),
+  wrapper: props => jsx("article", { ...props, css: { fontSize: "1.5vw" } }),
   h1: H1,
   h2: H2,
   h3: H3,
