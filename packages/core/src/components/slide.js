@@ -36,7 +36,7 @@ const ui = {
   }
 };
 
-function Slide({ config, data, path, Component, totalSlides }) {
+function Slide({ data, Component, totalSlides }) {
   if (!data.title) throw new Error("Slide title is required!");
 
   return jsx(
