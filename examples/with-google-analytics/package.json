@@ -1,7 +1,0 @@
-{
-  "name": "with-google-analytics",
-  "private": true,
-  "dependencies": {
-    "contentz": "*"
-  }
-}

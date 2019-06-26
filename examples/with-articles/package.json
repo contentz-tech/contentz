@@ -1,7 +1,0 @@
-{
-  "name": "with-articles",
-  "private": true,
-  "dependencies": {
-    "contentz": "*"
-  }
-}

@@ -1,11 +1,29 @@
 {
   "name": "contentz",
   "description": "Create Content, Get a Highly Optimized Website",
-  "private": true,
-  "repository": "https://github.com/sergiodxa/contentz.git",
-  "workspaces": [
-    "packages/*"
+  "version": "3.13.4",
+  "bin": "./cli.js",
+  "files": [
+    "src",
+    "cli.js",
+    "video.js",
+    "card.js",
+    "package.json",
+    "README.md",
+    "yarn.lock"
   ],
+  "keywords": [
+    "contentz",
+    "ssg",
+    "static",
+    "website",
+    "optimized",
+    "performance",
+    "offline first",
+    "mdx",
+    "i18n"
+  ],
+  "repository": "https://github.com/sergiodxa/contentz.git",
   "author": {
     "name": "Sergio Xalambrí",
     "email": "hello@sergiodxa.com",
@@ -18,25 +36,56 @@
   },
   "license": "MIT",
   "scripts": {
-    "lint": "eslint 'packages/**/*.js'",
-    "pretty": "prettier --check 'packages/**/*.js'",
-    "dev:serve": "serve examples/basic/public",
-    "dev:build": "cd examples/basic && node ../../packages/core/cli.js build; cd -"
+    "lint": "eslint 'src/**/*.js'",
+    "pretty": "prettier --check 'src/**/*.js'"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@contentz/init": "3.14.2",
+    "@contentz/social": "3.14.1",
+    "@contentz/write": "3.13.2",
+    "@emotion/babel-preset-css-prop": "^10.0.9",
+    "@emotion/core": "^10.0.7",
+    "@mdx-js/mdx": "^0.17.5",
+    "@mdx-js/tag": "^0.17.5",
+    "chalk": "^2.4.2",
+    "cli-prompt": "^0.6.0",
+    "cpy": "^7.0.1",
+    "date-fns": "^1.30.1",
+    "del": "^3.0.0",
+    "emotion": "^10.0.7",
+    "emotion-server": "^10.0.7",
+    "execa": "^1.0.0",
+    "get-hrefs": "^2.0.0",
+    "globby": "^9.0.0",
+    "gray-matter": "^4.0.2",
+    "is-absolute": "^1.0.0",
+    "local-chrome": "^0.1.0",
+    "markdown-toc": "^1.2.0",
+    "meow": "^5.0.0",
+    "mkdirp": "^0.5.1",
+    "open-editor": "^1.2.0",
+    "parse-url": "^5.0.1",
+    "puppeteer-core": "^1.12.2",
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "react-slugify": "^1.2.0",
+    "relative": "^3.0.2",
+    "terser": "^3.16.1"
   },
   "devDependencies": {
     "eslint": "^5.15.1",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "husky": "^1.3.1",
     "lerna": "^3.13.3",
     "lint-staged": "^8.1.5",
-    "prettier": "^1.16.4",
-    "serve": "^11.0.0"
+    "prettier": "^1.16.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": ""
     }
   },
   "lint-staged": {
