@@ -1,1 +1,1 @@
-module.exports = require("./src/components/video");
+module.exports = require("@contentz/build/src/components/video");

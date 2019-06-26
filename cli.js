@@ -1,8 +1,32 @@
 #!/usr/bin/env node
 const meow = require("meow");
 const chalk = require("chalk");
+const execa = require("execa");
+const commandExists = require("command-exists");
+const hasModule = require("has-module");
 
 const pkg = require("./package.json");
+
+function canUseYarn() {
+  return commandExists("yarn");
+}
+
+async function install(module) {
+  if (await canUseYarn()) {
+    await execa("yarn", ["add", module]);
+  } else {
+    await execa("npm", ["install", module]);
+  }
+}
+
+async function installAndRun(cmd, args) {
+  const module = `@contentz/${cmd}`;
+  if (!hasModule(module)) {
+    await install(module);
+  }
+  const command = require(module);
+  await command(args);
+}
 
 async function main() {
   const cli = meow(
@@ -22,7 +46,7 @@ async function main() {
     }
   );
 
-  let [cmd = "build", ...files] = cli.input;
+  let [cmd = "help", ...files] = cli.input;
   cmd = cmd.toLowerCase();
 
   switch (cmd) {
@@ -30,24 +54,16 @@ async function main() {
       return cli.showHelp(0);
     }
     case "build": {
-      const command = require("./src/build");
-      await command();
-      return;
+      return await installAndRun(cmd);
     }
     case "social": {
-      const command = require("@contentz/social");
-      await command(files);
-      return;
+      return await installAndRun(cmd, files);
     }
     case "write": {
-      const command = require("@contentz/write");
-      await command(files);
-      return;
+      return await installAndRun(cmd, files);
     }
     case "init": {
-      const command = require("@contentz/init");
-      await command(files);
-      return;
+      return await installAndRun(cmd, files[0]);
     }
     default: {
       console.error(`Command ${cmd} is not supported.`);

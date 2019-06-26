@@ -1,1 +1,1 @@
-module.exports = require("./src/components/card");
+module.exports = require("@contentz/build/src/components/card");
