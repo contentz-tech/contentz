@@ -37,7 +37,7 @@
   "dependencies": {
     "@contentz/utils": "^3.13.1",
     "chalk": "^2.4.2",
-    "execa": "^1.0.0",
+    "execa": "^2.0.0",
     "meow": "^5.0.0",
     "mkdirp": "^0.5.1"
   }
