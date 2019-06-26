@@ -649,7 +649,7 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@contentz/init@^3.13.1":
+"@contentz/init@3.14.2":
   version "3.14.2"
   resolved "https://registry.yarnpkg.com/@contentz/init/-/init-3.14.2.tgz#0272432814c21b85fd39ea8c01256eb1ab7e83bd"
   integrity sha512-O589bF9sdE6i5G0n4N2vKwnsQbpYKGXss93Pkdjha6SewLzm4NNreG/EFZnW4dqh1j3NheTsylhopo9kLdNGmg==
@@ -660,7 +660,7 @@
     meow "^5.0.0"
     node-fetch "^2.6.0"
 
-"@contentz/social@^3.13.2":
+"@contentz/social@3.14.1":
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/@contentz/social/-/social-3.14.1.tgz#2962504b3237adf37772e0b9b2ffdedb19e90022"
   integrity sha512-37wHcPNXewvQ4G/EWa53WosNPOUPhvs7eukQuqvrobAV8jjP1gnLojDgezEWEQX3H1Vt9Kr6/JDgsiSqe00gHQ==
@@ -685,7 +685,7 @@
     gray-matter "^4.0.2"
     mkdirp "^0.5.1"
 
-"@contentz/write@^3.13.1":
+"@contentz/write@3.13.2":
   version "3.13.2"
   resolved "https://registry.yarnpkg.com/@contentz/write/-/write-3.13.2.tgz#f7b9a20195f920c6dae408ac1dc9f99ee4cbee07"
   integrity sha512-Af6LGeWVUD6HIBSjS55ZV8j3+3ScyFJLJCLc/I2XzsPnamh6U6DYlL+YYM5awJzQdZa0aCFLczSJnXwwBcGYnQ==
