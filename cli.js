@@ -22,6 +22,7 @@ async function install(module) {
 async function installAndRun(cmd, args) {
   const module = `@contentz/${cmd}`;
   if (!hasModule(module)) {
+    console.log(`Module @contentz/${cmd} not found, starting to install it...`);
     await install(module);
   }
   const command = require(module);
