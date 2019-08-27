@@ -52,7 +52,7 @@
     "eslint-plugin-prettier": "3.1.0",
     "eslint-plugin-react": "7.14.3",
     "lerna": "3.16.4",
-    "lint-staged": "9.2.4",
+    "lint-staged": "9.2.5",
     "prettier": "1.18.2"
   },
   "husky": {
