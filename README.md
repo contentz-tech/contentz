@@ -170,7 +170,7 @@ If you want to link to static files like images, videos, etc. create a `/static`
 
 ## Style in MDX
 
-In case you want to add an HTML tag with custom styles directly in your MDX content you could use the [`css` prop]9https://emotion.sh/docs/css-prop) and the [`css` template tag](https://emotion.sh/docs/css-prop#string-styles) of [Emotion](https://emotion.sh/).
+In case you want to add an HTML tag with custom styles directly in your MDX content you could use the [`css` prop](https://emotion.sh/docs/css-prop) and the [`css` template tag](https://emotion.sh/docs/css-prop#string-styles) of [Emotion](https://emotion.sh/).
 
 Example:
 
