@@ -40,7 +40,7 @@
     "pretty": "prettier --check 'src/**/*.js'"
   },
   "dependencies": {
-    "chalk": "2.4.2",
+    "chalk": "4.1.1",
     "command-exists": "1.2.8",
     "execa": "3.2.0",
     "has-module": "0.1.1",
