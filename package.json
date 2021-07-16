@@ -44,7 +44,7 @@
     "command-exists": "1.2.8",
     "execa": "3.2.0",
     "has-module": "0.1.1",
-    "meow": "5.0.0"
+    "meow": "10.1.0"
   },
   "devDependencies": {
     "eslint": "6.6.0",
